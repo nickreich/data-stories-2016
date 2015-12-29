@@ -6,8 +6,9 @@ tagline:
 
 
 #### Course summary
+<img style="float: right;" src="cover-image.png" width="400"/>
+The aim of this course is to provide students with the skills necessary to tell interesting and useful stories in real-world encounters with data. Students will learn fundamental concepts and tools relevant to the practice of summarizing, visualizing, modeling, and analyzing data. Students will learn how to build statistical models that can be used to describe multidimensional relationships that exist in the real world. Specific methods covered will include linear, logistic, and Poisson regression. This course will introduce students to the R statistical computing language and by the end of the course will require substantial independent programming. To the extent possible, the course will draw on real datasets from biological and biomedical applications. This course is designed for students who are looking for a second course in applied statistics/biostatistics (e.g. beyond BIOSTATS 391B or STAT 240), or an accelerated introduction to statistics and modern statistical computing. 
 
-|The aim of this course is to provide students with the skills necessary to tell interesting and useful stories in real-world encounters with data. Students will learn fundamental concepts and tools relevant to the practice of summarizing, visualizing, modeling, and analyzing data. Students will learn how to build statistical models that can be used to describe multidimensional relationships that exist in the real world. Specific methods covered will include linear, logistic, and Poisson regression. This course will introduce students to the R statistical computing language and by the end of the course will require substantial independent programming. To the extent possible, the course will draw on real datasets from biological and biomedical applications. This course is designed for students who are looking for a second course in applied statistics/biostatistics (e.g. beyond BIOSTATS 391B or STAT 240), or an accelerated introduction to statistics and modern statistical computing. | <img style="float: right;" src="cover-image.png" width="400"/> |
 
 
 ---
