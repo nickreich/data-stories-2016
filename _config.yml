@@ -9,7 +9,7 @@ highlighter: 'pygments'
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Telling Stories with Data @ UMass-Amherst
+title : Telling Stories with Data: statistics, modeling, and visualization
 author :
   name : Nicholas Reich
   email : nick@umass.edu
