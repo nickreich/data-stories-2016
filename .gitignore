@@ -1,3 +1,38 @@
+*.Rproj
 .Rproj.user
+
+# History files
 .Rhistory
-.RData
+*.DS_Store
+
+# Example code in package build process
+*-Ex.R
+
+# R data files from past sessions
+.Rdata
+
+*lungc.txt
+
+# RStudio files
+*.Rproj
+.Rproj.user/
+.Rproj.user
+
+## remove unneeded files associated with lectures
+assets/lectures/*/*.tex
+figure/
+cache/
+
+## beamer files
+*.snm
+*.nav
+*.log
+*.toc
+*.vrb
+*.aux
+*.out
+*-concordance.tex
+*.synctex.gz
+
+## specific files
+_site/
