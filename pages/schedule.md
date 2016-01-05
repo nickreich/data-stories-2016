@@ -6,7 +6,6 @@ tagline:
 
 *This is the working schedule for the course. It is subject to change.*
 
-_ISL_ refers to the textbook _Introduction to Statistical Learning_, _PR_ refers to the textbook _Practical Regression and Anova using R_, and _OI_ refers to the _OpenIntro Statistics_ textbook.
 
 Week |       |     | Topic   | In-class resources | Reading
 ---- | ----- | --- | ------- | ------------------ | -------
@@ -25,6 +24,12 @@ Week |       |     | Topic   | In-class resources | Reading
  12  |     | 12, 14 | | |
  13  |     | 19, 21 | | |
  14  |     | 26     | | |
+
+
+<!--
+Week 1: 
+
+-->
 
 
 
