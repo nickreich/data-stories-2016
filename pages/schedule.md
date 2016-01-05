@@ -41,7 +41,7 @@ Week 2 & Understanding and visualizing data \\
    http://www.pnas.org/content/112/16/4999.figures-only
    https://aje.oxfordjournals.org/content/176/8/726.full?sid=ef166df2-28ea-42da-8b82-d3a3984f9f3e
    https://aje.oxfordjournals.org/content/161/6/585.full?sid=ef166df2-28ea-42da-8b82-d3a3984f9f3e
- Thurs: 
+ Thurs: Visualizing big data lecture
 Week 3 & The Language of Models\\
 Week 4 & Model formulas and coefficients\\
 Week 5 & Fitting models to data\\
