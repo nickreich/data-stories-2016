@@ -9,7 +9,7 @@ tagline:
 
 Week |       |     | Topic   | In-class resources | Reading
 ---- | ----- | --- | ------- | ------------------ | -------
- 1   | Jan | 19, 21  | | |
+ 1   | Jan | 19, 21  | Intro, motivation | |
  2   |     | 26, 28  &nbsp;|  | |
  3   | Feb | 2, 4   | | |
  4   |     | 9, 11 | | |
@@ -27,8 +27,33 @@ Week |       |     | Topic   | In-class resources | Reading
 
 
 <!--
-Week 1: 
 
+HW Idea: Each week a student presents a data story from a blog.
+
+Week 1 & Introduction, motivation, and overview \\
+ Reading: Kaplan 1
+ Tues: course intro, intro regression slides
+ Thurs: wits and wagers, course technology introduction, including intro to R, swirl
+Week 2 & Understanding and visualizing data \\
+ Reading: Data visualization papers: Messing
+ Swirl: 
+ Tues: Viz principles and examples
+   http://www.pnas.org/content/112/16/4999.figures-only
+   https://aje.oxfordjournals.org/content/176/8/726.full?sid=ef166df2-28ea-42da-8b82-d3a3984f9f3e
+   https://aje.oxfordjournals.org/content/161/6/585.full?sid=ef166df2-28ea-42da-8b82-d3a3984f9f3e
+ Thurs: 
+Week 3 & The Language of Models\\
+Week 4 & Model formulas and coefficients\\
+Week 5 & Fitting models to data\\
+Week 6 & Confidence and uncertainty in models\\
+Week 7 & Midterm review and exam\\
+Week 8 & Logistic Regression\\
+Week 9 & Poisson Regression\\
+Week 10 & Smooth splines\\
+Week 11 & Case study: NHANES dataset\\
+Week 12 & Case study: NCHS dataset\\
+Week 13 & Case study: Infant Health\\
+Week 14 & Final projects
 -->
 
 

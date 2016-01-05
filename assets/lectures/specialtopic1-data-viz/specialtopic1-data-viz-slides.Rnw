@@ -1,0 +1,111 @@
+%% Module 2 beamer/knitr slides
+%% Biostatistics in Practice workshop, January 2014
+%% Nicholas Reich: nick [at] schoolph.umass.edu
+
+
+\documentclass[table]{beamer}
+
+
+\input{../../slide-includes/standard-knitr-beamer-preamble}
+
+%        The following variables are assumed by the standard preamble:
+%	Global variable containing module name:
+\title{Data Visualization}
+%	Global variable containing module shortname:
+%		(Currently unused, may be used in future.)
+\newcommand{\ModuleShortname}{simPar}
+%	Global variable containing author name:
+\author{Nicholas G Reich}
+%	Global variable containing text of license terms:
+\newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\_US }
+%	Instructor: optional, can leave blank.
+%		Recommended format: {Instructor: Jane Doe}
+\newcommand{\Instructor}{}
+%	Course: optional, can leave blank.
+%		Recommended format: {Course: Biostatistics 101}
+\newcommand{\Course}{}
+
+\input{../../slide-includes/shortcuts}
+\usepackage{bbm}
+\hypersetup{colorlinks=TRUE, urlcolor=blue}
+
+%%%%%%%% IMPORTANT -- MUST HAVE [fragile] for some/all frames chunks to have output work correctly. 
+
+\begin{document}
+
+<<setup, include=FALSE>>=
+library(knitr)
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='scriptsize')
+@
+
+
+\begin{frame}[plain]
+        \titlepage
+\end{frame}
+
+<<ggplot2, echo=FALSE, message=FALSE>>=
+require(ggplot2)
+theme_set(theme_bw())
+@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{How do we perceive data?}
+
+\begin{block}{Elementary perceptual tasks (ranked most to least accurate)}
+\begin{enumerate}
+    \item Position along a common scale (e.g. dotplot, scatterplot)
+    \item Positions along nonaligned scales (e.g. stacked bar charts)
+    \item Length, direction, angle (e.g. barchart)
+    \item Area (e.g. bubble graph)
+    \item Volume, curvature (e.g. 3D pie-chart)
+    \item Shading, color saturation (e.g. chloropleth)
+\end{enumerate}
+\end{block}
+
+From Cleveland and McGill, ``Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods'', {\em JASA}, 1984.
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{How do we perceive data?}
+
+\begin{block}{Position along a common scale}
+
+\includegraphics
+
+\end{block}
+
+\footnotesize From Cleveland and McGill, ``Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods'', {\em JASA}, 1984.
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Principles of data design}
+
+\begin{block}{}
+\begin{enumerate}
+    \item Position along a common scale (e.g. dotplot, scatterplot)
+    \item Positions along nonaligned scales (e.g. stacked bar charts)
+    \item Length, direction, angle (e.g. barchart)
+    \item Area (e.g. bubble graph)
+    \item Volume, curvature (e.g. 3D pie-chart)
+    \item Shading, color saturation (e.g. chloropleth)
+\end{enumerate}
+\end{block}
+
+\footnotesize From Cleveland and McGill, ``Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods'', {\em JASA}, 1984.
+
+\end{frame}
+
+
+\end{document}

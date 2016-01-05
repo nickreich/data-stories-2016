@@ -1,0 +1,57 @@
+ \documentclass{article}
+
+\input{../../slide-includes/statsTeachR-preamble-labs}
+
+\begin{document}
+
+<<setup, include=FALSE, cache=FALSE>>=
+hook_source = knit_hooks$get('source') # the following correct tilde display
+knit_hooks$set(source = function(x, options) {
+  txt = hook_source(x, options)
+  gsub('~', '\\\\mytilde', txt)
+})
+@
+
+\license{This is a product of \href{http://statsteachr.org}{statsTeachR} that is released under a \href{http://creativecommons.org/licenses/by-sa/3.0}{Creative Commons Attribution-ShareAlike 3.0 Unported}. This lab was created by Nicholas Reich and Steele Valenzuela.}
+
+\section*{Empirical observations on how we perceive data }
+
+In a seminal paper on how humans process information from data graphics, Cleveland and McGill ran an experiment that tested how individuals were able to perceive the same quantitative information using different types of what they called ``elementary perceptual tasks''.\footnote{From Cleveland and McGill, ``Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods'', {\em JASA}, 1984.} The results from these experiments are shown below, ranked from most to least accurate:
+\begin{enumerate}
+    \item Position along a common scale (e.g. dotplot, scatterplot)
+    \item Positions along nonaligned scales (e.g. stacked bar charts)
+    \item Length, direction, angle (e.g. barchart)
+    \item Area (e.g. bubble graph)
+    \item Volume, curvature (e.g. 3D pie-chart)
+    \item Shading, color saturation (e.g. chloropleth)
+\end{enumerate}
+
+
+
+\section*{Striving towards `graphical excellence'}
+Edward Tufte has become a giant in the field of data visualization. In his several books on data visualization, he laid the foundation for many of the prevailing ideas of what makes good data graphics.
+
+He says that `graphical excellence' 
+\begin{itemize}
+\item `consists of complex ideas communicated with clarity, precision, and efficiency.'
+\item `is that which gives to the viewer the greatest number of ideas in the shortest time with the least ink in the smallest space.'
+\item `is nearly always multivariate.'
+\item `requires telling the truth about the data.'
+\end{itemize}
+
+Good visualizations should 
+\begin{itemize}
+\item `show the data'
+\item `induce the viewer to think about the substance rather than about methodology, graphic design, the technology..., or something else'
+\item `avoid distorting what the data have to say'
+\item `present many numbers in a small space'
+\item `make large data sets coherent'
+\item `encourage the eye to compare different pieces of data'
+\item `reveal the data at several levels of detail, from a broad overview to the fine structure'
+\item `serve a reasonably clear purpose: description, exploration, tabulation, or decoration'
+\item `be closely integrated with the statistical and verbal descriptions of a data set.'
+\end{itemize}
+
+\end{document}
+
+
