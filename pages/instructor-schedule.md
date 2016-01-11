@@ -1,33 +1,23 @@
 ---
 layout: page
-title: Class schedules
+title: Class schedules, instructor page
 tagline: 
 ---
 
+_Tuesday, week 1_
 
-*This is the working schedule for the course. It is subject to change.*
-
-
-Week |       |     | Topic   | In-class resources | Reading
----- | ----- | --- | ------- | ------------------ | -------
- 1   | Jan | 19, 21  | Intro, motivation | | Syllabus, Kaplan 1.
- 2   |     | 26, 28  &nbsp;|  | |
- 3   | Feb | 2, 4   | | |
- 4   |     | 9, 11 | | |
- 5   |     | 18     | | |
- 6   |     | 23, 25 | | |
- 7   | Mar | 1, 3   | | |
- 8   |     | 8, 10 | | |
-     |     | 15, 17 | Spring Break! | |
- 9   |     | 22, 24 | | |
- 10  |     | 29, 31  | | |
- 11  | Apr | 5, 7   | | |
- 12  |     | 12, 14 | | |
- 13  |     | 19, 21 | | |
- 14  |     | 26     | | |
-
-
+ - Welcome, introductions, syllabus hand-out, review course website and course goals (15 min)
+ - Lecture: Intro to telling stories with data (30 min)
+ - swirl demo (15 min)
+ - Mini lecture: what is R (10 minutes)
  
+_Thursday, week 1_
+
+ - wits and wagers (15 min)
+ - course technology intro: website, piazza, Google Drive (20 min)
+ - Some lab (40 min)
+
+
 <!--
 
 HW Idea: Each week a student presents a data story from a blog.
@@ -36,6 +26,10 @@ Week 1 & Introduction, motivation, and overview \\
  Reading: Kaplan 1
  Tues: course intro, intro regression slides, intro swirl
  Thurs: wits and wagers, course technology introduction, including intro to R
+ * Read syllabus
+ * Install R, RStudio
+ * Watch [Overview and history of R](https://www.youtube.com/watch?v=kzxHxFHW6hs)
+ * Complete the [swirl](http://swirlstats.com/students.html) R Programming course, modules 1-3.
 
  
 Week 2 & Understanding and visualizing data \\
