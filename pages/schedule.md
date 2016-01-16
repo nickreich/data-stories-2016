@@ -11,7 +11,7 @@ tagline:
 Week |       |     | Topic   | In-class resources | Reading
 ---- | ----- | --- | ------- | ------------------ | -------
  1   | Jan | 19, 21  | Intro, motivation | | Syllabus, Kaplan 1.
- 2   |     | 26, 28  &nbsp;|  | |
+ 2   |     | 26, 28  &nbsp;| Data visualization | | [Data viz reading list](pages/data-viz-reading-list.html)
  3   | Feb | 2, 4   | | |
  4   |     | 9, 11 | | |
  5   |     | 18     | | |
