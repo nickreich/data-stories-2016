@@ -13,6 +13,9 @@ _Due Thursday, 1/21 _
  - Install R, RStudio
  - register on Piazza site
  - Watch [Overview and history of R](https://www.youtube.com/watch?v=kzxHxFHW6hs)
- - Complete the [swirl](http://swirlstats.com/students.html) R Programming course, modules 1-3.
+ - Complete the [swirl](http://swirlstats.com/students.html) R Programming Alt course, modules 1-3:
+    1. Basic_Building_Blocks
+    2. Sequences_of_Numbers
+    3. Vectors
 
 

@@ -6,7 +6,7 @@ tagline:
 
 _Tuesday, week 1_
 
- - Welcome, introductions, syllabus hand-out, review course website and course goals (15 min)
+ - Welcome, introductions, review course website and course goals (15 min)
  - Lecture: Intro to telling stories with data (30 min)
  - swirl demo (15 min)
  - Mini lecture: what is R (10 minutes)
