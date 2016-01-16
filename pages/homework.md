@@ -8,11 +8,11 @@ Homework assignments will be posted here, in general organized by due date. Unle
 
 **Collaboration on homework is expected and encouraged, although you must write up your own assignment. No copying or cutting and pasting.**
 
-_Due Thursday, 1/21 _
+_Due Thursday, 1/21_ 
+
  - Read syllabus
  - Install R, RStudio
- - register on Piazza site
- - Watch [Overview and history of R](https://www.youtube.com/watch?v=kzxHxFHW6hs)
+ - register on Piazza site, complete pre-semester survey
  - Complete the [swirl](http://swirlstats.com/students.html) R Programming Alt course, modules 1-3:
     1. Basic_Building_Blocks
     2. Sequences_of_Numbers
