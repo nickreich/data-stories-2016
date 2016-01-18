@@ -50,11 +50,20 @@
 
 \begin{frame}{Communicating ideas with evidence}
 
-\begin{block}{What is a narrative?}
+\begin{block}{What is a narrative? [From the OED]}
+
+\em An account of a series of events, facts, etc., given in order and with the establishing of connections between them; a narration, a story, an account.
 
 \end{block}
 
-\begin{block}{What is data?}
+\bigskip
+
+\begin{block}{What is data? [From Google: literally, ``what is data'']}
+
+\vspace{1em}
+
+\includegraphics[width=.5\textwidth]{figure-static/data-definition.png}
+\includegraphics[width=.5\textwidth]{figure-static/data-usage-over-time.png}
 
 \end{block}
 
