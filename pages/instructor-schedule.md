@@ -17,8 +17,13 @@ _Thursday, week 1_
  - course technology intro: website, piazza, Google Drive (20 min)
  - Some lab (40 min)
 
+_Tuesday, week 2_
+
+ - R check-in, Q&A
+ - lecture on Principles of Analytic Data Graphics (25 min)
 
 <!--
+
 
 HW Idea: Each week a student presents a data story from a blog.
 

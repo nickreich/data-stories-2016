@@ -62,30 +62,51 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Examples}
+\begin{frame}
 
-[example headlines/images from blog posts/articles]
+\begin{centering}
+\includegraphics[width=.5\textwidth]{figure-static/bialikfischer-uber-header.png}
+
+\includegraphics[width=.8\textwidth]{figure-static/bialikfischer-uber-title.png}
+
+\includegraphics[width=1\textwidth]{figure-static/uber-seasonalchange-22.png}
+\end{centering}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+
+\includegraphics[width=.8\textwidth]{figure-static/bialikfischerbaum-title.png}
+
+\includegraphics[width=.5\textwidth]{figure-static/bialikfischerbaum-ubertime-1.png}
+\includegraphics[width=.5\textwidth]{figure-static/bialikfischerbaum-ubertime-2.png}
+
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{frame}{Examples}
+\begin{frame}
 
-[example headlines/images from blog posts/articles]
+\includegraphics[width=.8\textwidth]{figure-static/wolfers-women-credit-title.png}
+
+\includegraphics[width=.6\textwidth]{figure-static/wolfers-women-credit-1.png}
+
+\includegraphics[width=.6\textwidth]{figure-static/wolfers-women-credit-2.png}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{frame}{How to tell a story using data}
-[add some images here]
 Telling stories with data requires
 \begin{itemize}
     \item detective work
     \item creativity, both scientific and artistic
     \item experimentation
-    \item good data, and note good data does not nescessarily equal big data
+    \item good data, (good data does not nescessarily equal big data)
 \end{itemize}
 
 \end{frame}

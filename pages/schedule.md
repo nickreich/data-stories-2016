@@ -11,7 +11,7 @@ tagline:
 Week |       |     | Topic   | In-class resources | Reading
 ---- | ----- | --- | ------- | ------------------ | -------
  1   | Jan | 19, 21  | Intro, motivation | | Syllabus, Kaplan 1.
- 2   |     | 26, 28  &nbsp;| Data visualization | | [Data viz reading list](pages/data-viz-reading-list.html)
+ 2   |     | 26, 28  &nbsp;| Data visualization | | [Data viz reading list](data-viz-reading-list.html)
  3   | Feb | 2, 4   | | |
  4   |     | 9, 11 | | |
  5   |     | 18     | | |
@@ -29,6 +29,23 @@ Week |       |     | Topic   | In-class resources | Reading
 
  
 <!--
+
+Principles_of_Analytic_Graphs
+Exploratory_Graphs
+Graphics_Devices_in_R
+Plotting_Systems
+Base_Plotting_System
+Lattice_Plotting_System
+Working_with_Colors
+GGPlot2_Part1
+GGPlot2_Part2
+GGPlot2_Extras
+Hierarchical_Clustering
+K_Means_Clustering
+Dimension_Reduction
+Clustering_Example
+CaseStudy
+
 
 HW Idea: Each week a student presents a data story from a blog.
 
