@@ -7,6 +7,7 @@ tagline:
 _Tuesday, week 1_
 
  - Welcome, introductions, review course website and course goals (15 min)
+ - Wits and wagers (10 min)
  - Lecture: Intro to telling stories with data (30 min)
  - swirl demo (15 min)
  - Mini lecture: what is R (10 minutes)
