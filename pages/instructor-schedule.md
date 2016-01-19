@@ -13,7 +13,6 @@ _Tuesday, week 1_
  
 _Thursday, week 1_
 
- - wits and wagers (15 min)
  - course technology intro: website, piazza, Google Drive (20 min)
  - Some lab (40 min)
 
