@@ -1,8 +1,8 @@
 ---
 title: "How Random is the iPod's shuffle?"
-author: ""
+author: ''
 date: "January 20, 2016"
-output: html_document
+output: pdf_document
 ---
 
 ### Is the iPod's shuffle random?
@@ -34,6 +34,7 @@ How would you know if your sequence of numbers is random? Just looking at them w
 
 \bigskip &nbsp;
 
+\clearpage
 
 2.	What comes to mind when you hear the word, “random”?
 
