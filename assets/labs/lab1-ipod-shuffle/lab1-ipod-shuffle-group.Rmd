@@ -2,14 +2,14 @@
 title: "How Random is the iPod's shuffle?"
 author: ''
 date: "January 20, 2016"
-output: pdf_document
+output: html_document
 ---
 
 ##Group Task
 
 Albert Hoffman, an iPod owner, has written a letter to Apple to complain about the iPod shuffle feature.  He writes that every day he takes an hour-long walk and listens to his iPod using the shuffle feature. He believes that the shuffle feature is producing playlists in which some artists are played too often and others are not played enough. 
 
-He has claimed that the iPod Shuffle feature is not generating random playlists. As evidence, Mr. Hoffman has provided both his (music library)[https://github.com/nickreich/data-stories-2016/blob/gh-pages/assets/labs/lab1-ipod-shuffle/Albert-Hoffman-Music-Library.csv] (8 artists with 10 songs each) and three playlists (20 songs each) that his iPod generated using the shuffle feature.
+He has claimed that the iPod Shuffle feature is not generating random playlists. As evidence, Mr. Hoffman has provided both his [music library](https://github.com/nickreich/data-stories-2016/blob/gh-pages/assets/labs/lab1-ipod-shuffle/Albert-Hoffman-Music-Library.csv) (8 artists with 10 songs each) and three playlists (20 songs each) that his iPod generated using the shuffle feature.
 
 Tim Cook, the CEO of Apple, Inc., has contacted your group to respond to Mr. Hoffman’s complaint. He has provided your group with several playlists of 20 songs each using the same songs as Mr. Hoffman’s library but generating them using a genuine random number generation method.
 
@@ -17,7 +17,7 @@ To help your group respond to Mr. Hoffman, the next four parts of the problem ar
   
 ###PART I: Explore and Describe
 
-Examine the (randomly generated playlists)[https://github.com/nickreich/data-stories-2016/raw/gh-pages/assets/labs/lab1-ipod-shuffle/25-Random-Playlists.pdf] (your group will be given 25) to get an idea of the characteristics of these lists. Write down and number two or more characteristics of a randomly generated playlist in the space below.
+Examine the [randomly generated playlists](https://github.com/nickreich/data-stories-2016/raw/gh-pages/assets/labs/lab1-ipod-shuffle/25-Random-Playlists.pdf) (your group will be given 25) to get an idea of the characteristics of these lists. Write down and number two or more characteristics of a randomly generated playlist in the space below.
  
 \bigskip &nbsp;
 
