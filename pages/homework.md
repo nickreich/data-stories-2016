@@ -21,11 +21,13 @@ _Due Thursday, 1/21_
 _Due Tuesday, 1/26_
 
  - Read Kaplan Chapter 1.
+ - Read articles from [Data Visualization reading list](data-viz-reading-list.html).
  - Complete the [swirl](http://swirlstats.com/students.html) R Programming Alt course, modules 4-7:
     4. Missing_Values
     5. Subsetting_Vectors
     6. Matrices_and_Data_Frames
     7. Logic
+
 
  
 
