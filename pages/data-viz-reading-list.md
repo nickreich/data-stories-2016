@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Missing Data Reading List
+title: Data Visualization Reading List
 tagline: 
 ---
 
