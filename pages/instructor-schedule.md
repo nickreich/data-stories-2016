@@ -15,7 +15,8 @@ _Tuesday, week 1_
 _Thursday, week 1_
 
  - course technology intro: website, piazza, Google Drive (20 min)
- - Some lab (40 min)
+ - iPod lab (40 min)
+ - quick R check-in (5 min)
 
 _Tuesday, week 2_
 
