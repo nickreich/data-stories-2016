@@ -21,6 +21,8 @@ _Thursday, week 1_
 _Tuesday, week 2_
 
  - R check-in, Q&A
+ - wrap-up of random shuffle activity: they developed a classification model! classical train/validate/test methodology implemented.
+ - coin-flipping?
  - lecture on Principles of Analytic Data Graphics (25 min)
 
 <!--

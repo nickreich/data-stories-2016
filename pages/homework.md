@@ -22,6 +22,7 @@ _Due Tuesday, 1/26_
 
  - Read Kaplan Chapter 1.
  - Read articles from [Data Visualization reading list](data-viz-reading-list.html).
+ - Each group should submit their iPod shuffle lab write-up on Piazza that answers the following questions: What rules did you apply to Mr. Hoffman's playlists? Did you find evidence to support the claim that Mr. Hoffman's playlists are not random? 
  - Complete the [swirl](http://swirlstats.com/students.html) R Programming Alt course, modules 4-7:
     4. Missing_Values
     5. Subsetting_Vectors
