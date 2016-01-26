@@ -25,6 +25,9 @@ _Tuesday, week 2_
  - coin-flipping?
  - lecture on Principles of Analytic Data Graphics (25 min)
 
+_Thursday, week 2_
+
+
 <!--
 
 

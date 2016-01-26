@@ -1,0 +1,408 @@
+---
+title: "Introduction to Data Visualization"
+subtitle: principles and exploratory data analysis
+author: "Nicholas Reich"
+date: "January 25, 2016"
+output: ioslides_presentation
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## Acknowledgments
+
+These slides are adapted from the Coursera JHU Data Science Specialization [course material](https://github.com/DataScienceSpecialization/courses) available through a Creative Commons license and the Swirl [course repository](https://github.com/swirldev/swirl_courses) available through a GNU GPL v3.
+
+Thanks to the original authors for making their material available for reuse and remixing!
+
+These slides are made available under a [Creative Commons BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/4.0/), similar to the material from which they were derived.
+
+# Principles of Analytic Graphics
+
+## Principles of Analytic Graphics
+
+<img src="static-figures/tufte-cover.jpg" height="500px" />
+
+## Principles of Analytic Graphics
+
+* Principle 1: Show comparisons
+
+  - Evidence for a hypothesis is always *relative* to another competing
+    hypothesis.
+
+  - Always ask "Compared to What?"
+
+
+## Show Comparisons
+
+![](static-figures/AirCln1.jpeg)
+
+
+
+## Show Comparisons
+
+![](static-figures/AirCln2.jpeg)
+
+
+
+## Principles of Analytic Graphics
+
+* Principle 1: Show comparisons
+
+  - Evidence for a hypothesis is always *relative* to another competing
+    hypothesis.
+
+  - Always ask "Compared to What?"
+
+* Principle 2: Show causality, mechanism, explanation, systematic structure 
+  - What is your causal framework for thinking about a question?
+
+
+
+## Show causality, mechanism
+
+![test](static-figures/AirCln2.jpeg)
+
+
+## Show causality, mechanism
+
+![test](static-figures/AirCln3.jpeg)
+
+
+
+## Principles of Analytic Graphics
+
+* Principle 1: Show comparisons
+
+  - Evidence for a hypothesis is always *relative* to another competing
+    hypothesis.
+
+  - Always ask "Compared to What?"
+
+* Principle 2: Show causality, mechanism, explanation, systematic structure 
+  - What is your causal framework for thinking about a question?
+
+* Principle 3: Show multivariate data
+  - Multivariate = more than 2 variables 
+  - The real world is multivariate
+  - Need to "escape flatland"
+
+
+
+## Show Multivariate Data
+
+![test](static-figures/MVData1.jpeg)
+
+## Show Multivariate Data
+
+![test](static-figures/MVData2.jpeg)
+
+
+
+## Principles of Analytic Graphics
+
+* Principle 4: Integration of evidence
+  - Completely integrate words, numbers, images, diagrams
+
+  - Data graphics should make use of many modes of data presentation 
+
+  - Don't let the tool drive the analysis
+
+
+
+## Integrate Different Modes of Evidence
+
+![test](static-figures/Integ.jpeg)
+
+
+
+## Principles of Analytic Graphics
+
+* Principle 4: Integration of evidence
+  - Completely integrate words, numbers, images, diagrams
+
+  - Data graphics should make use of many modes of data presentation 
+
+  - Don't let the tool drive the analysis
+
+* Principle 5: Describe and document the evidence with appropriate
+  labels, scales, sources, etc.
+
+  - A data graphic should tell a complete story that is credible 
+
+
+
+
+## Principles of Analytic Graphics
+
+* Principle 4: Integration of evidence
+  - Completely integrate words, numbers, images, diagrams
+
+  - Data graphics should make use of many modes of data presentation 
+
+  - Don't let the tool drive the analysis
+
+* Principle 5: Describe and document the evidence with appropriate
+  labels, scales, sources, etc.
+
+  - A data graphic should tell a complete story that is credible 
+
+* Principle 6: Content is king
+
+  - Analytical presentations ultimately stand or fall depending on the
+    quality, relevance, and integrity of their content
+
+
+
+## Summary
+
+* Principle 1: Show comparisons
+* Principle 2: Show causality, mechanism, explanation
+* Principle 3: Show multivariate data
+* Principle 4: Integrate multiple modes of evidence
+* Principle 5: Describe and document the evidence
+* Principle 6: Content is king
+
+# Exporatory Data Graphics
+
+## Why do we use graphs in data analysis? 
+
+* To understand data properties
+* To find patterns in data
+* To suggest modeling strategies
+* To "debug" analyses
+* To communicate results
+
+
+
+## Exploratory graphs
+
+* <redtext>To understand data properties</redtext>
+* <redtext>To find patterns in data</redtext>
+* <redtext>To suggest modeling strategies</redtext>
+* <redtext>To "debug" analyses</redtext>
+* To communicate results
+
+
+
+## Characteristics of exploratory graphs
+
+* They are made quickly
+* A large number are made
+* The goal is for personal understanding
+* Axes/legends are generally cleaned up (later)
+* Color/size are primarily used for information
+
+
+
+## Air Pollution in the United States
+
+* The U.S. Environmental Protection Agency (EPA) sets national ambient
+  air quality standards for outdoor air pollution
+
+   - [U.S. National Ambient Air Quality Standards](http://www.epa.gov/air/criteria.html)
+
+* For fine particle pollution (PM2.5), the "annual mean, averaged over
+  3 years" cannot exceed $12~\mu g/m^3$.
+
+* Data on daily PM2.5 are available from the U.S. EPA web site
+
+   - [EPA Air Quality System](http://www.epa.gov/ttn/airs/airsaqs/detaildata/downloadaqsdata.htm)
+
+* **Question**: Are there any counties in the U.S. that exceed that
+  national standard for fine particle pollution?
+
+
+
+## Data {.smaller}
+
+Annual average PM2.5 averaged over the period 2008 through 2010
+
+```{r readpm25data}
+pollution <- read.csv("data/avgpm25.csv", 
+                      colClasses = c("numeric", "character", "factor", "numeric", "numeric"))
+head(pollution)
+```
+
+Do any counties exceed the standard of $12~\mu g/m^3$?
+
+
+
+## Simple Summaries of Data
+
+
+One dimension
+
+* Five-number summary
+* Boxplots
+* Histograms
+* Density plot
+* Barplot
+
+
+
+## Five Number Summary
+
+```{r}
+summary(pollution$pm25)
+```
+
+
+
+## Boxplot
+
+```{r}
+boxplot(pollution$pm25, col = "blue")
+```
+
+
+
+## Histogram
+
+```{r}
+hist(pollution$pm25, col = "green")
+```
+
+
+
+## Histogram
+
+```{r}
+hist(pollution$pm25, col = "green")
+rug(pollution$pm25)
+```
+
+
+
+## Histogram
+
+```{r}
+hist(pollution$pm25, col = "green", breaks = 100)
+rug(pollution$pm25)
+```
+
+
+
+## Overlaying Features
+
+```{r}
+boxplot(pollution$pm25, col = "blue")
+abline(h = 12)
+```
+
+
+
+
+## Overlaying Features
+
+```{r}
+hist(pollution$pm25, col = "green")
+abline(v = 12, lwd = 2)
+abline(v = median(pollution$pm25), col = "magenta", lwd = 4)
+```
+
+
+
+## Barplot
+
+```{r}
+barplot(table(pollution$region), col = "wheat", 
+        main = "Number of Counties in Each Region")
+```
+
+
+
+## Simple Summaries of Data
+
+Two dimensions
+
+* Multiple/overlayed 1-D plots (Lattice/ggplot2)
+* Scatterplots
+* Smooth scatterplots
+
+$> 2$ dimensions
+
+* Overlayed/multiple 2-D plots; coplots
+* Use color, size, shape to add dimensions
+* Spinning plots
+* Actual 3-D plots (not that useful)
+
+
+
+
+## Multiple Boxplots
+
+```{r}
+boxplot(pm25 ~ region, data = pollution, col = "red")
+```
+
+
+
+## Multiple Histograms
+
+```{r}
+par(mfrow = c(2, 1), mar = c(4, 4, 2, 1))
+hist(subset(pollution, region == "east")$pm25, col = "green")
+hist(subset(pollution, region == "west")$pm25, col = "green")
+```
+
+
+
+## Scatterplot
+
+```{r}
+with(pollution, plot(latitude, pm25))
+abline(h = 12, lwd = 2, lty = 2)
+```
+
+
+
+## Scatterplot - Using Color
+
+```{r}
+with(pollution, plot(latitude, pm25, col = region))
+abline(h = 12, lwd = 2, lty = 2)
+```
+
+
+
+## Multiple Scatterplots
+
+```{r}
+par(mfrow = c(1, 2), mar = c(5, 4, 2, 1))
+with(subset(pollution, region == "west"), plot(latitude, pm25, main = "West"))
+with(subset(pollution, region == "east"), plot(latitude, pm25, main = "East"))
+```
+
+
+
+## Summary
+
+* Exploratory plots are "quick and dirty"
+
+* Let you summarize the data (usually graphically) and highlight any broad features
+
+* Explore basic questions and hypotheses (and perhaps rule them out)
+
+* Suggest modeling strategies for the "next step"
+
+
+# Perception of Data Graphics
+
+## Perception of Data
+
+In a seminal paper on how humans process information from data graphics, Cleveland and McGill ran an experiment that tested how individuals were able to perceive the same quantitative information using different types of what they called "elementary perceptual tasks". The results from these experiments are shown below, ranked from most to least accurate:
+
+* Position along a common scale (e.g. dotplot, scatterplot)
+* Positions along nonaligned scales (e.g. stacked bar charts)
+* Length, direction, angle (e.g. barchart)
+* Area (e.g. bubble graph)
+* Volume, curvature (e.g. 3D pie-chart)
+* Shading, color saturation (e.g. chloropleth)
+
+
+## References
+
+* Cleveland and McGill (1984). "Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods". *Journal of the American Statistical Association*.
+* Edward Tufte (2006). *Beautiful Evidence*, Graphics Press LLC. [www.edwardtufte.com](http://www.edwardtufte.com)

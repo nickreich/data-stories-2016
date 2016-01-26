@@ -4,7 +4,7 @@ title: Homework
 tagline: 
 ---
 
-Homework assignments will be posted here, in general organized by due date. Unless otherwise specified, parts of homework assignments that need to be handed in should be handed in via your personal Google Drive folder that only you and the instructor have access to. 
+Homework assignments will be posted here, in general organized by due date. Unless otherwise specified, parts of homework assignments that need to be handed in should be handed in via your personal Google Drive folder that only you and the instructor have access to. Unless specified below, the deadline for completing homework is before the beginning of class on the due date. 
 
 **Collaboration on homework is expected and encouraged, although you must write up your own assignment. No copying or cutting and pasting.**
 
@@ -30,5 +30,24 @@ _Due Tuesday, 1/26_
     7. Logic
 
 
+_Due Thursday, 1/28_
  
+ - Complete the [swirl](http://swirlstats.com/students.html) R Programming Alt course, modules 8, 11 and 12:
+    8. Functions
+    11. Looking at Data
+    12. Simulation
+ - Complete the [swirl](http://swirlstats.com/students.html) Exploratory Data Analysis course, modules 1-3 (also, modules 5-10 are recommended for extra practice/skill development but not required):
+    1. Principles_of_Analytic_Graphs
+    2. Exploratory_Graphs
+    3. Graphics_Devices_in_R
+
+
+_Due Sunday 1/31 and Tuesday, 2/2_
+
+ - Please select a blog entry that you'd like to present (briefly) on Tuesday, February 2nd. The entry should be from 2014 or later and relate to statistics, data science, or R. Please submit your choice on Piazza by midnight on Sunday, January 31st. The presentations will be no more than 90 seconds long and should provide a brief summary of the entry, why you found it interesting, and what question you have after reading it.  As a start, check out these blogs for lots of entries that may be of interest:
+    - [Simply Statistics](http://simplystatistics.org)
+    - [Stats Blogs](http://www.statsblogs.com)
+    - [R-Bloggers](http://r-bloggers.com)
+    - [FiveThirtyEight](http://fivethirtyeight.com/)
+
 
