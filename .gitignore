@@ -1,6 +1,9 @@
 *.Rproj
 .Rproj.user
 
+*_cache/
+*_files/
+
 # History files
 .Rhistory
 *.DS_Store
