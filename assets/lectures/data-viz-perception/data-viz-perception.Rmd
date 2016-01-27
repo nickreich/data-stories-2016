@@ -1,0 +1,26 @@
+---
+title: "Data Visualization"
+author: "Nicholas G Reich, et al."
+date: "January 27, 2016"
+output: ioslides_presentation
+---
+
+# Perception of Data Graphics
+
+## Perception of Data
+
+In a seminal paper on how humans process information from data graphics, Cleveland and McGill ran an experiment that tested how individuals were able to perceive the same quantitative information using different types of what they called "elementary perceptual tasks". The results from these experiments are shown below, ranked from most to least accurate:
+
+* Position along a common scale (e.g. dotplot, scatterplot)
+* Positions along nonaligned scales (e.g. stacked bar charts)
+* Length, direction, angle (e.g. barchart)
+* Area (e.g. bubble graph)
+* Volume, curvature (e.g. 3D pie-chart)
+* Shading, color saturation (e.g. chloropleth)
+
+
+
+## References
+
+* Cleveland and McGill (1984). "Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods". *Journal of the American Statistical Association*.
+* Edward Tufte (2006). *Beautiful Evidence*, Graphics Press LLC. [www.edwardtufte.com](http://www.edwardtufte.com)

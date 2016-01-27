@@ -26,6 +26,9 @@ _Tuesday, week 2_
 
 _Thursday, week 2_
 
+ - finish data-viz lecture: perception and ggplot
+ - ggplot lab 2
+
  - coin-flipping?
 
 

@@ -1,0 +1,223 @@
+---
+title: 'Data visualization in R'
+subtitle: 'ggplot2'
+author: "Nicholas G Reich, et al."
+date: "January 27, 2016"
+output: ioslides_presentation
+---
+
+
+# Graphics in R
+
+## Choices of graphics platforms
+You have three central choices for making graphics in R:
+
+* "Base graphics"
+* ggplot2
+* lattice
+
+
+
+## Let there be data.... {.smaller}
+```{r}
+library(NHANES)
+data(NHANES)
+str(NHANES)
+```
+
+## Graphics in R: Base graphics
+
+```{r}
+plot(NHANES$Weight, NHANES$Height)
+```
+
+##A simple `ggplot2` graphic
+
+```{r cache=TRUE, fig.height=3.5, message=FALSE, warning=FALSE}
+library(ggplot2)
+qplot(Weight, Height, data=NHANES)
+```
+
+## A simple `lattice` graphic
+
+```{r cache=TRUE}
+library(lattice)
+xyplot(Height ~ Weight, data=NHANES) 
+```
+
+## The `mosaic` package can translate between them
+
+```{r eval=FALSE}
+library(mosaic)
+mplot(NHANES)
+```
+
+{\tt mplot()} loads a very nice graphical user interface for creating graphics, and spits out the code for ggplot or lattice graphics. 
+
+Try it out! Practice saving a graphic from RStudio.
+
+
+## Why I use `ggplot2`
+
+* ``easy'' to create both simple and complex graphics
+* unified syntax
+* attractive defaults (except for colors)
+* actively developed and improved
+
+## Quick tour of `ggplot2` syntax
+
+```{r , cache=TRUE, eval=TRUE, message=FALSE, warning=FALSE, fig.height=3.5}
+## defaults to scatterplot
+qplot(Weight, Height, data=NHANES) 
+```
+
+## Quick tour of `ggplot2` syntax
+
+```{r , cache=TRUE, eval=TRUE, message=FALSE, warning=FALSE, fig.height=3.5}
+## defaults to scatterplot
+## same as default
+qplot(Weight, Height, data=NHANES, geom="point") 
+```
+
+
+## Quick tour of `ggplot2` syntax
+
+```{r , cache=TRUE, eval=TRUE, message=FALSE, warning=FALSE, fig.height=3.5}
+qplot(Weight, Height, data=NHANES, geom="smooth") 
+```
+
+## Quick tour of `ggplot2` syntax
+
+```{r , cache=TRUE, eval=TRUE, message=FALSE, warning=FALSE, fig.height=3.5}
+qplot(Weight, Height, data=NHANES, 
+      geom=c("smooth", "point")) 
+```
+
+
+## Quick tour of `ggplot2` syntax
+
+```{r , cache=TRUE, eval=TRUE, message=FALSE, warning=FALSE, fig.height=3.5}
+qplot(Weight, Height, data=NHANES, 
+      geom=c("smooth", "point"), alpha=I(.01)) 
+```
+
+## `ggplot2`  building blocks
+
+The grammar ...
+
+* geom 
+* aesthetics (`aes`)
+* scales
+* facets
+* data
+* ... and more here: [http://docs.ggplot2.org/current/](http://docs.ggplot2.org/current/)
+
+
+## What is a "geom"?
+
+From [http://ggplot2.org/resources/2007-vanderbilt.pdf](Hadley):
+
+* Geoms define the basic ``shape'' of the elements on the plot
+* Basics: point, line, bar, text, hline, vline
+* Statistics: histogram, smooth, density
+* Others: boxplot, pointrange, linerange, ribbon
+
+For more info check out the documentation: [http://docs.ggplot2.org/current/](http://docs.ggplot2.org/current)
+
+## What are "aesthetics"?
+
+Aesthetics define a mapping between data and the display.\footnote{Figure credits: \href{http://ggplot2.org/resources/2007-vanderbilt.pdf}{Hadley Wickham}}
+
+<img src="static-figures/aes.png" height="200px" />
+
+## Thinking about aesthetics
+
+Each geom has a different set of aesthetics.
+
+What aesthetics might we need for {\tt geom\_point}?
+
+## Aesthetics for geom\_point
+
+{\tt geom\_point} understands the following aesthetics
+
+* x (required)
+* y (required)
+* alpha
+* color
+* fill
+* shape
+* size
+
+
+## Aesthetics for geom\_line
+
+What aesthetics might we need for {\tt geom\_line}?
+
+
+## Aesthetics for geom\_line
+
+{\tt geom\_line} understands the following aesthetics
+
+* x (required)
+* y (required)
+* alpha
+* color
+* linetype
+* size
+
+
+## A more involved example
+
+```{r cache=TRUE, eval=TRUE, message=FALSE, warning=FALSE, fig.height=3.5}
+qplot(Weight, Height, data=NHANES, 
+      geom="smooth", se=FALSE,
+      color=Race1,
+      facets=.~Gender) 
+```
+
+## qplot() vs ggplot {.smaller}
+
+
+```{r eval=FALSE}
+qplot(Weight, Height, data=NHANES, 
+      geom="smooth", se=FALSE,
+      color=Race1,
+      facets=.~Gender) 
+```
+
+```{r eval=FALSE}
+ggplot(NHANES) +
+        geom_smooth(aes(x=Weight, y=Height, color=Race1), se=FALSE) +
+        geom_point(aes(x=Weight, y=Height, color=Race1), alpha=I(.01)) +
+        facet_grid(.~Gender)
+```
+
+
+
+## How to get help with ggplot
+
+* Ask Google: "ggplot [what I'm trying to do]"
+* Ask your classmates/instructors on Piazza!
+* Post something on \href{http://stats.stackexchange.com/questions/tagged/ggplot2}{stackexchange} or the \href{https://groups.google.com/forum/?fromgroups#!forum/ggplot2}{ggplot2 mailing list}
+* Read more!
+    * [http://ggplot2.org/](http://ggplot2.org/)
+    * [http://www.cookbook-r.com/Graphs/](Cookbook for R)
+    * [http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403/](Hadley's book)
+
+* Practice, practice, practice.
+
+# Try it yourself!
+
+## Experiment with mplot - VERY useful!
+
+```{r eval=FALSE}
+library(mosaic)
+mplot(NHANES)
+```
+Work on creating a data visualization with a teammate using the NHANES dataset. 
+
+By 3:30pm, you should have posted a final version of your data graphic on Piazza, along with the code you used to create it. A few of them will be chosen and discussed by the whole class.
+
+
+
+
