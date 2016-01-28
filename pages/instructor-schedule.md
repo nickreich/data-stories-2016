@@ -26,8 +26,11 @@ _Tuesday, week 2_
 
 _Thursday, week 2_
 
- - finish data-viz lecture: perception and ggplot
- - ggplot lab 2
+ - check-ins: post reproducible code on Piazza for help!
+ - data-viz lecture: ggplot
+ - ggplot/mplot lab with NHANES data
+
+
 
  - coin-flipping?
 
