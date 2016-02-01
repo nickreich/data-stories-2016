@@ -2,17 +2,16 @@
 title: "Using data visualization to find patterns in multidimensional data"
 author: "Nicholas Reich (adapted with permission from slides by Amelia McNamara)"
 date: "January 2016"
-output: 
+output:
   ioslides_presentation:
-    self_contained: false
     css: markdown7.css
+    self_contained: yes
+  beamer_presentation: default
 ---
 
 
 ```{r, echo=FALSE}
 library(knitr)
-opts_knit$set(animation.fun = hook_scianimator, cache=TRUE)
-knit_hooks$set(custom_plot = hook_plot_custom)
 knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 ```
 
