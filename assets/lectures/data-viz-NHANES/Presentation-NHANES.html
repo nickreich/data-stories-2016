@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Using data visualization to find patterns in multidimensional data</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" media="all" href="Presentation-NHANES_files/ioslides-13.5.1/fonts/fonts.css">
+
+  <link rel="stylesheet" media="all" href="Presentation-NHANES_files/ioslides-13.5.1/theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="Presentation-NHANES_files/ioslides-13.5.1/theme/css/phone.css">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Using data visualization to find patterns in multidimensional data',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+              },
+
+      // Author information
+      presenters: [
+            {
+        name:  'Nicholas Reich (adapted with permission from slides by Amelia McNamara)' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+
+  </style>
+
+  <link rel="stylesheet" href="markdown7.css" type="text/css" />
+
+
+</head>
+
+<body style="opacity: 0">
+
+<slides>
+
+  <slide class="title-slide segue nobackground">
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">January 2016</p>
+          </hgroup>
+  </slide>
+
+<slide class=''><hgroup><h2>&quot;Big&quot; thoughts</h2></hgroup><article  id="big-thoughts">
+
+<p>Big data is a subset of multidimensional data. Both contribute (but neither is <em>necessary</em>) to the degree of story-worthiness of your dataset.</p>
+
+<p>Some of the best and most useful data vizualizations are ones that we make for ourselves</p>
+
+</article></slide><slide class=''><hgroup><h2>John Tukey</h2></hgroup><article  id="john-tukey">
+
+<div class="columns-2">
+<blockquote>
+<p>&quot;The greatest value of a picture is when it forces us to notice what we never expected to see.&quot; - John Tukey, 1977</p>
+</blockquote>
+
+<div class="centered">
+<img src="tukey-EDA-cover.jpg" height="500"></div></div>
+
+</article></slide><slide class=''><hgroup><h2>Example: boxplots</h2></hgroup><article  id="example-boxplots">
+
+<div class="centered">
+<img src="tukey-boxplot.jpg" height="500"></div>
+
+</article></slide><slide class=''><hgroup><h2>Data for this talk</h2></hgroup><article  id="data-for-this-talk">
+
+<pre class = 'prettyprint lang-r'>library(NHANES)
+data(NHANES)
+set.seed(123) ## why set the seed?
+str(NHANES)</pre>
+
+<pre >## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    10000 obs. of  76 variables:
+##  $ ID              : int  51624 51624 51624 51625 51630 51638 51646 51647 51647 51647 ...
+##  $ SurveyYr        : Factor w/ 2 levels &quot;2009_10&quot;,&quot;2011_12&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Gender          : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 2 2 2 1 2 2 1 1 1 ...
+##  $ Age             : int  34 34 34 4 49 9 8 45 45 45 ...
+##  $ AgeDecade       : Factor w/ 8 levels &quot; 0-9&quot;,&quot; 10-19&quot;,..: 4 4 4 1 5 1 1 5 5 5 ...
+##  $ AgeMonths       : int  409 409 409 49 596 115 101 541 541 541 ...
+##  $ Race1           : Factor w/ 5 levels &quot;Black&quot;,&quot;Hispanic&quot;,..: 4 4 4 5 4 4 4 4 4 4 ...
+##  $ Race3           : Factor w/ 6 levels &quot;Asian&quot;,&quot;Black&quot;,..: NA NA NA NA NA NA NA NA NA NA ...
+##  $ Education       : Factor w/ 5 levels &quot;8th Grade&quot;,&quot;9 - 11th Grade&quot;,..: 3 3 3 NA 4 NA NA 5 5 5 ...
+##  $ MaritalStatus   : Factor w/ 6 levels &quot;Divorced&quot;,&quot;LivePartner&quot;,..: 3 3 3 NA 2 NA NA 3 3 3 ...
+##  $ HHIncome        : Factor w/ 12 levels &quot; 0-4999&quot;,&quot; 5000-9999&quot;,..: 6 6 6 5 7 11 9 11 11 11 ...
+##  $ HHIncomeMid     : int  30000 30000 30000 22500 40000 87500 60000 87500 87500 87500 ...
+##  $ Poverty         : num  1.36 1.36 1.36 1.07 1.91 1.84 2.33 5 5 5 ...
+##  $ HomeRooms       : int  6 6 6 9 5 6 7 6 6 6 ...
+##  $ HomeOwn         : Factor w/ 3 levels &quot;Own&quot;,&quot;Rent&quot;,&quot;Other&quot;: 1 1 1 1 2 2 1 1 1 1 ...
+##  $ Work            : Factor w/ 3 levels &quot;Looking&quot;,&quot;NotWorking&quot;,..: 2 2 2 NA 2 NA NA 3 3 3 ...
+##  $ Weight          : num  87.4 87.4 87.4 17 86.7 29.8 35.2 75.7 75.7 75.7 ...
+##  $ Length          : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ HeadCirc        : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Height          : num  165 165 165 105 168 ...
+##  $ BMI             : num  32.2 32.2 32.2 15.3 30.6 ...
+##  $ BMICatUnder20yrs: Factor w/ 4 levels &quot;UnderWeight&quot;,..: NA NA NA NA NA NA NA NA NA NA ...
+##  $ BMI_WHO         : Factor w/ 4 levels &quot;12.0_18.5&quot;,&quot;18.5_to_24.9&quot;,..: 4 4 4 1 4 1 2 3 3 3 ...
+##  $ Pulse           : int  70 70 70 NA 86 82 72 62 62 62 ...
+##  $ BPSysAve        : int  113 113 113 NA 112 86 107 118 118 118 ...
+##  $ BPDiaAve        : int  85 85 85 NA 75 47 37 64 64 64 ...
+##  $ BPSys1          : int  114 114 114 NA 118 84 114 106 106 106 ...
+##  $ BPDia1          : int  88 88 88 NA 82 50 46 62 62 62 ...
+##  $ BPSys2          : int  114 114 114 NA 108 84 108 118 118 118 ...
+##  $ BPDia2          : int  88 88 88 NA 74 50 36 68 68 68 ...
+##  $ BPSys3          : int  112 112 112 NA 116 88 106 118 118 118 ...
+##  $ BPDia3          : int  82 82 82 NA 76 44 38 60 60 60 ...
+##  $ Testosterone    : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ DirectChol      : num  1.29 1.29 1.29 NA 1.16 1.34 1.55 2.12 2.12 2.12 ...
+##  $ TotChol         : num  3.49 3.49 3.49 NA 6.7 4.86 4.09 5.82 5.82 5.82 ...
+##  $ UrineVol1       : int  352 352 352 NA 77 123 238 106 106 106 ...
+##  $ UrineFlow1      : num  NA NA NA NA 0.094 ...
+##  $ UrineVol2       : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ UrineFlow2      : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Diabetes        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ DiabetesAge     : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ HealthGen       : Factor w/ 5 levels &quot;Excellent&quot;,&quot;Vgood&quot;,..: 3 3 3 NA 3 NA NA 2 2 2 ...
+##  $ DaysPhysHlthBad : int  0 0 0 NA 0 NA NA 0 0 0 ...
+##  $ DaysMentHlthBad : int  15 15 15 NA 10 NA NA 3 3 3 ...
+##  $ LittleInterest  : Factor w/ 3 levels &quot;None&quot;,&quot;Several&quot;,..: 3 3 3 NA 2 NA NA 1 1 1 ...
+##  $ Depressed       : Factor w/ 3 levels &quot;None&quot;,&quot;Several&quot;,..: 2 2 2 NA 2 NA NA 1 1 1 ...
+##  $ nPregnancies    : int  NA NA NA NA 2 NA NA 1 1 1 ...
+##  $ nBabies         : int  NA NA NA NA 2 NA NA NA NA NA ...
+##  $ Age1stBaby      : int  NA NA NA NA 27 NA NA NA NA NA ...
+##  $ SleepHrsNight   : int  4 4 4 NA 8 NA NA 8 8 8 ...
+##  $ SleepTrouble    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 NA 2 NA NA 1 1 1 ...
+##  $ PhysActive      : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 NA 1 NA NA 2 2 2 ...
+##  $ PhysActiveDays  : int  NA NA NA NA NA NA NA 5 5 5 ...
+##  $ TVHrsDay        : Factor w/ 7 levels &quot;0_hrs&quot;,&quot;0_to_1_hr&quot;,..: NA NA NA NA NA NA NA NA NA NA ...
+##  $ CompHrsDay      : Factor w/ 7 levels &quot;0_hrs&quot;,&quot;0_to_1_hr&quot;,..: NA NA NA NA NA NA NA NA NA NA ...
+##  $ TVHrsDayChild   : int  NA NA NA 4 NA 5 1 NA NA NA ...
+##  $ CompHrsDayChild : int  NA NA NA 1 NA 0 6 NA NA NA ...
+##  $ Alcohol12PlusYr : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 NA 2 NA NA 2 2 2 ...
+##  $ AlcoholDay      : int  NA NA NA NA 2 NA NA 3 3 3 ...
+##  $ AlcoholYear     : int  0 0 0 NA 20 NA NA 52 52 52 ...
+##  $ SmokeNow        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 NA 2 NA NA NA NA NA ...
+##  $ Smoke100        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 NA 2 NA NA 1 1 1 ...
+##  $ Smoke100n       : Factor w/ 2 levels &quot;Non-Smoker&quot;,&quot;Smoker&quot;: 2 2 2 NA 2 NA NA 1 1 1 ...
+##  $ SmokeAge        : int  18 18 18 NA 38 NA NA NA NA NA ...
+##  $ Marijuana       : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 NA 2 NA NA 2 2 2 ...
+##  $ AgeFirstMarij   : int  17 17 17 NA 18 NA NA 13 13 13 ...
+##  $ RegularMarij    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 NA 1 NA NA 1 1 1 ...
+##  $ AgeRegMarij     : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ HardDrugs       : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 NA 2 NA NA 1 1 1 ...
+##  $ SexEver         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 NA 2 NA NA 2 2 2 ...
+##  $ SexAge          : int  16 16 16 NA 12 NA NA 13 13 13 ...
+##  $ SexNumPartnLife : int  8 8 8 NA 10 NA NA 20 20 20 ...
+##  $ SexNumPartYear  : int  1 1 1 NA 1 NA NA 0 0 0 ...
+##  $ SameSex         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 NA 2 NA NA 2 2 2 ...
+##  $ SexOrientation  : Factor w/ 3 levels &quot;Bisexual&quot;,&quot;Heterosexual&quot;,..: 2 2 2 NA 2 NA NA 1 1 1 ...
+##  $ PregnantNow     : Factor w/ 3 levels &quot;Yes&quot;,&quot;No&quot;,&quot;Unknown&quot;: NA NA NA NA NA NA NA NA NA NA ...</pre>
+
+</article></slide><slide class=''><hgroup><h2>Modified data</h2></hgroup><article  id="modified-data">
+
+<pre class = 'prettyprint lang-r'>library(dplyr)
+NHANES_ltd &lt;- select(NHANES[sample(nrow(NHANES), 500),],  ## subset for lighter-weight figures
+                     Age, Gender, Education, HHIncomeMid, Height, BMI_WHO, SexAge, AgeFirstMarij) %&gt;%
+  mutate(Education = as.ordered(Education),
+         BMI_WHO = as.ordered(BMI_WHO))
+str(NHANES_ltd)</pre>
+
+<pre >## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    500 obs. of  8 variables:
+##  $ Age          : int  67 21 23 21 13 80 5 3 10 30 ...
+##  $ Gender       : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 2 1 2 2 2 2 1 2 1 ...
+##  $ Education    : Ord.factor w/ 5 levels &quot;8th Grade&quot;&lt;&quot;9 - 11th Grade&quot;&lt;..: 1 4 3 3 NA 3 NA NA NA 5 ...
+##  $ HHIncomeMid  : int  17500 NA 100000 22500 7500 22500 12500 50000 70000 100000 ...
+##  $ Height       : num  169 184 142 176 162 ...
+##  $ BMI_WHO      : Ord.factor w/ 4 levels &quot;12.0_18.5&quot;&lt;&quot;18.5_to_24.9&quot;&lt;..: 2 2 3 2 2 2 1 1 2 4 ...
+##  $ SexAge       : int  17 NA NA NA NA NA NA NA NA 18 ...
+##  $ AgeFirstMarij: int  NA NA NA NA NA NA NA NA NA NA ...</pre>
+
+</article></slide><slide class=''><hgroup><h2>outline</h2></hgroup><article  id="outline">
+
+<p>Multivariate plots</p>
+
+<ul>
+<li>CSV fingerprint</li>
+<li>pairs plots options</li>
+<li>Table plot</li>
+<li>Parallel plots</li>
+</ul>
+
+<p>Lower-variate plots</p>
+
+<ul>
+<li>Faceting</li>
+<li>Heat maps, contour plots</li>
+<li>Graphical inference</li>
+<li>scatter plots with smooths, marginal histograms,</li>
+</ul>
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Overview of your data</h2></hgroup><article  id="overview-of-your-data">
+
+</article></slide><slide class=''><hgroup><h2>CSV fingerprint</h2></hgroup><article  id="csv-fingerprint">
+
+<p>Powell, V. CSV Fingerpint. <a href='http://setosa.io/csv-fingerprint/' title=''><a href='http://setosa.io/csv-fingerprint/' title=''>http://setosa.io/csv-fingerprint/</a></a></p>
+
+<div class="centered">
+<img src="csvfingerprint.png" height="410"> <img src="key.png"></div>
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Standard pairs plot / scatterplot matrix</h2></hgroup><article  id="standard-pairs-plot-scatterplot-matrix">
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'>plot(NHANES_ltd)</pre>
+
+<p><img src="Presentation-NHANES_files/figure-html/pairsplot-1.png" title="" alt="" width="720" height="550" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'>select(NHANES_ltd, Age, Height, SexAge, AgeFirstMarij) %&gt;% 
+  pairs()</pre>
+
+<p><img src="Presentation-NHANES_files/figure-html/subpairsplot-1.png" title="" alt="" width="720" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Generalized pairs plot</h2></hgroup><article  id="generalized-pairs-plot">
+
+</article></slide><slide class=''><hgroup><h2>Generalized pairs plot</h2></hgroup><article  id="generalized-pairs-plot-1">
+
+<p>The pairs plot is useful on its own, but the generalized pairs plot is even better.</p>
+
+<p>Emerson, J. W., Green, W. A., Schloerke, B., Crowley, J., Cook, D., Hofmann, H., and Wickham, H. (2013). The generalized pairs plot. Journal of Computational and Graphical Statistics, 22(1):79–91.</p>
+
+<p><a href='http://bit.ly/gpairs' title=''><a href='http://bit.ly/gpairs' title=''>http://bit.ly/gpairs</a></a></p>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'>library(ggplot2)
+library(GGally)
+print(select(NHANES_ltd, Age, Gender, Height, SexAge, AgeFirstMarij) %&gt;% 
+  ggpairs())</pre>
+
+<p><img src="Presentation-NHANES_files/figure-html/ggally-pairsplot3-1.png" title="" alt="" width="750" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Tableplots</h2></hgroup><article  id="tableplots">
+
+</article></slide><slide class=''><hgroup><h2>Tableplots</h2></hgroup><article  id="tableplots-1">
+
+<p>Tennekes, M., de Jonge, E., and Daas, P. J., H. (2013). Visualizing and inspecting large datasets with tableplots. Journal of Data Science, 11(2013):43-58. <a href='http://bit.ly/tabplot' title=''><a href='http://bit.ly/tabplot' title=''>http://bit.ly/tabplot</a></a></p>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'>library(tabplot)
+NHANES_ltd2 &lt;- select(NHANES, 
+                     Age, Education, HHIncomeMid, Height, BMI_WHO, SexAge, AgeFirstMarij) %&gt;%
+  mutate(Education = as.ordered(Education),
+         BMI_WHO = as.ordered(BMI_WHO))
+tableplot(NHANES_ltd2, sortCol=Age)</pre>
+
+<p><img src="Presentation-NHANES_files/figure-html/tabplot1-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'>tableplot(NHANES_ltd2, sortCol=BMI_WHO)</pre>
+
+<p><img src="Presentation-NHANES_files/figure-html/tabplot2-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'>tableplot(NHANES_ltd2, sortCol=Education)</pre>
+
+<p><img src="Presentation-NHANES_files/figure-html/tabplot3-1.png" title="" alt="" width="720" /></p>
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Graphical inference</h2></hgroup><article  id="graphical-inference">
+
+</article></slide><slide class=''><hgroup><h2>Graphical inference</h2></hgroup><article  id="graphical-inference-1">
+
+<p>Wickham, H., Cook, D., Hofmann, H., and Buja, A. (2010). Graphical inference for infovis. IEEE Transactions on Visualization and Computer Graphics, 16(6).</p>
+
+<p><a href='http://bit.ly/graphical_inference' title=''><a href='http://bit.ly/graphical_inference' title=''>http://bit.ly/graphical_inference</a></a></p>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<p>Do college grads become sexually active later compared with individuals similar individuals with less than a college education?</p>
+
+<blockquote>
+<p>Can you see the difference?</p>
+</blockquote>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'>library(nullabor)
+qplot(Education, SexAge, data=NHANES_ltd) %+% lineup(null_permute(&#39;SexAge&#39;), NHANES_ltd) +
+  facet_wrap(~.sample) + geom_boxplot() + theme(axis.text.x  = element_text(angle=90, vjust=0.5))</pre>
+
+<pre >## decrypt(&quot;OlCE bQTQ Aw GWPATAWw vr&quot;)</pre>
+
+<p><img src="Presentation-NHANES_files/figure-html/inference-1.png" title="" alt="" width="750" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'>decrypt(&quot;OlCE bQTQ Aw GWPATAWw vr&quot;)</pre>
+
+<pre >## [1] &quot;True data in position 20&quot;</pre></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script src="Presentation-NHANES_files/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+<script src="Presentation-NHANES_files/ioslides-13.5.1/js/prettify/prettify.js"></script>
+<script src="Presentation-NHANES_files/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+<script src="Presentation-NHANES_files/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+<script src="Presentation-NHANES_files/ioslides-13.5.1/js/hammer.js"></script>
+<script src="Presentation-NHANES_files/ioslides-13.5.1/js/slide-controller.js"></script>
+<script src="Presentation-NHANES_files/ioslides-13.5.1/js/slide-deck.js"></script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

@@ -51,3 +51,6 @@ _Due Sunday 1/31 and Tuesday, 2/2_
     - [FiveThirtyEight](http://fivethirtyeight.com/)
 
 
+_Due Thursday 2/4_
+
+ - Use tableplot and the NHANES dataset to create a multivariate data visualization. Post it on Piazza prior to class on Thursday, with a few sentence description of what story you think the graphic is telling.  

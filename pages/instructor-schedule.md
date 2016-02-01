@@ -30,6 +30,10 @@ _Thursday, week 2_
  - data-viz lecture: ggplot
  - ggplot/mplot lab with NHANES data
 
+_Tuesday, week 3_
+
+ - blog post presentations
+ - multivariate data visualization lecture
 
 
  - coin-flipping?

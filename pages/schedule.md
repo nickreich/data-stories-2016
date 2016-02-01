@@ -12,7 +12,7 @@ Week |       |     | Topic   | In-class resources | Reading
 ---- | ----- | --- | ------- | ------------------ | -------
  1   | Jan | 19, 21  | Intro, motivation | [swirl](../assets/labs/swirl-intro.R), iPod lab [ind](../assets/labs/lab1-ipod-shuffle/lab1-ipod-shuffle-individual.html), [grp](../assets/labs/lab1-ipod-shuffle/lab1-ipod-shuffle-group.html) | Syllabus, Kaplan 1.
  2   |     | 26, 28  &nbsp;| Data visualization | | [Data viz reading list](data-viz-reading-list.html)
- 3   | Feb | 2, 4   | | |
+ 3   | Feb | 2, 4   | Data visualization | |
  4   |     | 9, 11 | | |
  5   |     | 18     | | |
  6   |     | 23, 25 | | |
