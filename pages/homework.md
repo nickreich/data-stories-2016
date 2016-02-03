@@ -8,6 +8,10 @@ Homework assignments will be posted here, in general organized by due date. Unle
 
 **Collaboration on homework is expected and encouraged, although you must write up your own assignment. No copying or cutting and pasting.**
 
+_Due Thursday 2/11_
+
+ - Read Kaplan Chapters 6 and 7.
+
 _Due Tuesday 2/9_
 
  - Dataset proposals for [Project 1](project1.html) due.

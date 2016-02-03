@@ -35,6 +35,20 @@ _Tuesday, week 3_
  - blog post presentations
  - multivariate data visualization lecture
 
+_Thurs, week 3_
+
+ - 20 minutes for project planning
+ -
+ 
+_Tues, week 4_
+ 
+ - Nick out of town
+ - optional work session for projects
+
+_Thurs, week 4_
+
+ - review of reading: Ch6 (language of models) and Ch 7 (Model formulas and coefficients)
+ - questions, lecture based on exercises in Kaplan materials
 
  - coin-flipping?
 
