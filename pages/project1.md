@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Project 1: Reproduce a data analysis
+title: 'Project 1: Reproduce a data analysis'
 tagline: 
 ---
 
-For this project, you will work with a partner to reproduce a published data analysis (blog, academic paper, etc...). You will need to find an analysis that has made both data and code publicly available. There will be two central deliverables for this project: 
+For this project, you will work with a partner to reproduce a published data analysis (blog, academic paper, etc...). You will need to find an analysis that has made both data and code publicly available. The instructor must approve the dataset. There will be two central deliverables for this project: 
 
  1. The reproduced analysis, in the form of a "blog post" report (i.e. an html page).
  2. A second, "follow-up" report that provides some additional, original data analysis and visualizations that you create. The report will be created as a single file, but each individual should take charge of creating one piece of the story that this report tells.
