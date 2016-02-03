@@ -18,9 +18,8 @@ knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 
 ## "Big" thoughts
 
-Big data is a subset of multidimensional data. Both contribute (but neither is _necessary_) to the degree of  story-worthiness of your dataset.
-
-Some of the best and most useful data vizualizations are ones that we make for ourselves
+ - Big data is a subset of multidimensional data. Both contribute to (but neither taken on their own are _necessary_ ingredients for) telling a compelling story with your data.
+ - Some of the best and most useful data vizualizations are ones that we make for ourselves
 
 
 ## John Tukey
@@ -164,4 +163,6 @@ qplot(Education, SexAge, data=NHANES_ltd) %+% lineup(null_permute('SexAge'), NHA
 ```{r answers}
 decrypt("OlCE bQTQ Aw GWPATAWw vr")
 ```
+
+# Thank you!
 
