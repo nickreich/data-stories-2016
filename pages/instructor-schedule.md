@@ -37,8 +37,10 @@ _Tuesday, week 3_
 
 _Thurs, week 3_
 
+ - quiz
+ - table plot review
+ - perception discussion
  - 20 minutes for project planning
- -
  
 _Tues, week 4_
  
