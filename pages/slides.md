@@ -11,6 +11,9 @@ The source code and PDF files associated with the lectures will be posted below 
 \[S=Slides \| A=Annotated Slides \]
 
 * Lecture 1: Introduction to Regression \[  [S](../assets/lectures/lecture1-intro-regression/lecture1-intro-regression.pdf) \]
+* Lecture 2: The Language of Models \[  [S](../assets/lectures/lecture2-model-language/lecture2-model-language.pdf) \]
+
+
 * Data Viz 1: Principles of Data Visualization \[  [S](../assets/lectures/data-viz-principles/data-viz-principles-and-EDA.html) \]
 * Data Viz 2: Data Visualization (ggplot2) \[  [S](../assets/lectures/data-viz-ggplot/data-viz-ggplot.html) \]
 * Data Viz 3: Multivariate Data Visualization \[  [S](../assets/lectures/data-viz-NHANES/Presentation-NHANES.html) \]

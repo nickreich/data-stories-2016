@@ -51,6 +51,17 @@ _Thurs, week 4_
 
  - review of reading: Ch6 (language of models) and Ch 7 (Model formulas and coefficients)
  - questions, lecture based on exercises in Kaplan materials
+ 
+_Tues, week 5_
+ 
+ - No class: monday schedule
+
+_Thurs, week 5_
+ 
+ - in-class presentations about project 1
+ - lecture: ch ??
+
+ - group presentations about [blog post]( http://simplystatistics.org/2016/02/01/a-menagerie-of-messed-up-data-analyses-and-how-to-avoid-them/)
 
  - coin-flipping?
 

@@ -13,7 +13,7 @@ Timeline of the project
 
  - Thurs 2/4: teams assigned
  - Tues 2/9: dataset proposals due
- - Tues 2/18: draft of the reproducible analysis, brief in-class presentation describing technologies/methods used, and challenges faced so far
- - Tues 2/23: draft of the follow-up report that.
+ - Thurs 2/18: draft of the reproducible analysis, brief in-class presentation describing technologies/methods used, and challenges faced so far
+ - Tues 2/23: draft of the follow-up report.
  - Tues 3/1: Final reports due, 5-10 minute in-class presentation for each report.
 
