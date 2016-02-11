@@ -8,6 +8,11 @@ Homework assignments will be posted here, in general organized by due date. Unle
 
 **Collaboration on homework is expected and encouraged, although you must write up your own assignment. No copying or cutting and pasting.**
 
+_Due Thursday 2/18_
+
+ - Read Kaplan Chapter 8.
+ - Brief presentations (<5 minutes per team) from [Project 1](project1.html).
+
 _Due Thursday 2/11_
 
  - Read Kaplan Chapters 6 and 7.
