@@ -313,6 +313,13 @@ p + annotate("text", x=2, y=23, label="D ~ poly(A, 2)", size=10)
     \includegraphics[width=\textwidth]{correlation.png}  
 \end{figure}
 
+
+\bigskip
+
+Up next: the mechanics and math of fitting models to data!
+
+\bigskip
+
 {\footnotesize * Image credits: XKCD, \url{http://xkcd.com/552/}}
 
 \end{frame}
