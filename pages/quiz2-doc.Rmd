@@ -42,7 +42,6 @@ mod5 = lm(HR ~ Sex * Temp, data=jama)
 coef(mod5)
 ```
 
-(a) What is the mean heart rate of all 130 observations?
 (b) What is the mean heart rate just for the men?
 (c) What are the units of the coefficient -166.285 in Model 2?
 (d) What are the units of the coefficient 2.443 in Model 2?
