@@ -58,10 +58,18 @@ _Tues, week 5_
 
 _Thurs, week 5_
  
- - quiz 2
+ - quiz 2 (15 min)
  - in-class presentations about project 1
  - lecture: ch 8, fitting models
  - OI lab 1?
+
+_Tues, week 6_
+ 
+ - 
+
+_Thurs, week 6_
+
+ - group project peer reviews (25 min)
 
  - group presentations about [blog post]( http://simplystatistics.org/2016/02/01/a-menagerie-of-messed-up-data-analyses-and-how-to-avoid-them/)
 
