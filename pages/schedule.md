@@ -14,9 +14,9 @@ Week |       |     | Topic   | In-class resources | Reading
  2   |     | 26, 28  &nbsp;| Data visualization | | [Data viz reading list](data-viz-reading-list.html)
  3   | Feb | 2, 4   | Data visualization | |
  4   |     | 9, 11 | Language of Models | [Lec 2](../assets/lectures/data-viz-NHANES/Presentation-NHANES.html) | Kaplan Ch. 6, 7
- 5   |     | 18     | Fitting Models | | Kaplan Ch. 8
- 6   |     | 23, 25 | | |
- 7   | Mar | 1, 3   | | |
+ 5   |     | 18     | Fitting Linear Models | | Kaplan Ch. 8
+ 6   |     | 23, 25 | Linear Regression | |
+ 7   | Mar | 1, 3   | Project 1 | |
  8   |     | 8, 10 | | |
      |     | 15, 17 | Spring Break! | |
  9   |     | 22, 24 | | |
