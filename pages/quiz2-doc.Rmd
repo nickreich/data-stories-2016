@@ -42,12 +42,3 @@ mod5 = lm(HR ~ Sex * Temp, data=jama)
 coef(mod5)
 ```
 
-(b) What is the mean heart rate just for the men?
-(c) What are the units of the coefficient -166.285 in Model 2?
-(d) What are the units of the coefficient 2.443 in Model 2?
-(e) What is the meaning for heart rate of the coefficient 2.443 in Model 2?
-(f) Using Model 4, what is the model value for the heart rate of a woman with temperature 100deg?
-(g) The coefficient SexM in Model 4 is negative. Describe what this indicates in terms of everyday language.
-(h) Using Model 5, what is the model value of the heart rate for a man with temperature 100deg?
-(i) What is the slope of a graph (HR vs Temp) of the model function for women in Model 5? Include units.
-(j) What is the slope of a graph (HR vs Temp) of the model function for men in Model 5? Include units.
