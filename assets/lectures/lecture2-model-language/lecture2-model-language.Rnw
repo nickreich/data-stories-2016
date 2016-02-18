@@ -235,6 +235,25 @@ p
 
 \begin{frame}[fragile]{Draw the model...}
 
+<<simData4, tidy=FALSE, echo=FALSE, message=FALSE, fig.height=4>>=
+p + annotate("text", x=2, y=23, label="D ~ 1", size=10)
+@
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Draw the model...}
+
+<<simData5, tidy=FALSE, echo=FALSE, message=FALSE, fig.height=4>>=
+p + annotate("text", x=2, y=23, label="D ~ G", size=10)
+@
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Draw the model...}
+
 <<simData1, tidy=FALSE, echo=FALSE, message=FALSE, fig.height=4>>=
 p + annotate("text", x=2, y=23, label="D ~ A", size=10)
 @
@@ -262,26 +281,6 @@ p + annotate("text", x=2, y=23, label="D ~ A + G", size=10)
 
 \end{frame}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[fragile]{Draw the model...}
-
-<<simData4, tidy=FALSE, echo=FALSE, message=FALSE, fig.height=4>>=
-p + annotate("text", x=2, y=23, label="D ~ 1", size=10)
-@
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[fragile]{Draw the model...}
-
-<<simData5, tidy=FALSE, echo=FALSE, message=FALSE, fig.height=4>>=
-p + annotate("text", x=2, y=23, label="D ~ G", size=10)
-@
-
-\end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
