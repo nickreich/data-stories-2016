@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Lecture notes
+title: Course Materials
 tagline: 
 ---
 
@@ -17,6 +17,10 @@ The source code and PDF files associated with the lectures will be posted below 
 * Data Viz 1: Principles of Data Visualization \[  [S](../assets/lectures/data-viz-principles/data-viz-principles-and-EDA.html) \]
 * Data Viz 2: Data Visualization (ggplot2) \[  [S](../assets/lectures/data-viz-ggplot/data-viz-ggplot.html) \]
 * Data Viz 3: Multivariate Data Visualization \[  [S](../assets/lectures/data-viz-NHANES/Presentation-NHANES.html) \]
+
+
+* [Lab 1: iPod shuffle](../assets/labs/lab1-ipod-shuffle/lab1-ipod-shuffle-individual.html)
+* [Lab 2: Linear regression](../assets/labs/lab2-slr/lab2-slr.pdf)
 
 <!--  \|  [A](../assets/lectures/lecture1-intro-regression/lecture1-intro-regression-annotated.pdf) \]
 * Lecture 2: Simple Linear Regression and Least Squares \[  [S](../assets/lectures/lecture2-slr-basics/lecture2-slr-basics.pdf) \| [A](../assets/lectures/lecture2-slr-basics/lecture2-slr-basics-annotated.pdf)  \]
