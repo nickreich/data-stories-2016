@@ -22,8 +22,9 @@ _Due Thursday 3/1, 5pm_
 -->
 
 _Due Thursday 2/25, 5pm_
+
  - Read OpenIntro Chapter 7.
- - [Lab 2](../assets/lab2-slr/lab2-slr.pdf). You should hand in an html created with RMarkdown file that shows your code as well as has your written responses to the exercises.
+ - [Lab 2](../assets/labs/lab2-slr/lab2-slr.pdf). You should hand in an html created with RMarkdown file that shows your code as well as has your written responses to the exercises.
 
 _Due Thursday 2/18_
 
