@@ -1,0 +1,267 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+
+\input{../../slide-includes/statsTeachR-preamble-labs}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+
+\license{This is a product of \href{http://statsteachr.org}{statsTeachR} that is released under a \href{http://creativecommons.org/licenses/by-sa/3.0}{Creative Commons Attribution-ShareAlike 3.0 Unported}. This lab was adapted for \href{http://statsteachr.org}{statsTeachR} by Sara Nu\~nez, Nicholas Reich and Andrea Foulkes from an \href{http://www.openintro.org/stat/}{OpenIntro Statistics} lab written by Andrew Bray and Mine \c{C}etinkaya-Rundel.}
+
+\section*{Lab 2: Introduction to linear regression}
+
+\subsection*{Cigarettes and carbon monoxide emissions}
+
+An abundance of research has been done to assess the direct health impacts of cigarette smoke. Studies have also investigated the effects that different cigarette brands have on the environment based on their chemical make-ups. While each chemical in cigarettes are considered hazardous to the smoker's health by the United States Surgeon General, in this lab we will be interested in seeing if there is an association between the amount of chemicals and the amount of carbon monoxide emitted into the environment. 
+
+\subsection*{The data}
+
+The data set presented here is taken from the 3rd edition of \emph{Statistics for
+Engineering and the Sciences} by Mendenhall and Sincich (1992) and is a subset of the data produced by the Federal Trade Commission. This data was found through the American Statistical Association website, and a fuller description of the data can be found at \web{http://www.amstat.org/publications/jse/datasets/cigarettes.txt}. Let's load the data and look at summary of the variables. Be sure to install the package \emph{RCurl} in order to obtain the data from the internet.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(RCurl)}
+\hlstd{URL} \hlkwb{<-}\hlkwd{getURL}\hlstd{(}\hlstr{"http://www.amstat.org/publications/jse/datasets/cigarettes.dat.txt"}\hlstd{,}
+             \hlkwc{ssl.verifypeer}\hlstd{=}\hlnum{FALSE}\hlstd{)}
+\hlstd{cigs} \hlkwb{<-}\hlkwd{read.table}\hlstd{(}\hlkwc{text}\hlstd{=URL)}
+\hlkwd{names}\hlstd{(cigs)}\hlkwb{<-}\hlkwd{c}\hlstd{(}\hlstr{"brand"}\hlstd{,}\hlstr{"tar"}\hlstd{,}\hlstr{"nicotene"}\hlstd{,}\hlstr{"weight"}\hlstd{,}\hlstr{"CO"}\hlstd{)}
+
+\hlkwd{summary}\hlstd{(cigs)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{exercise}
+What type of plot would you use to display the relationship between \hlkwd{CO} and one of the other numerical variables?  Plot this relationship using the variable \hlkwd{tar} as the predictor.  Does the relationship look linear?  If you knew how much tar was in a given brand of cigarettes, would you be comfortable using a linear model to predict the carbon monoxide content of that brand?
+\end{exercise}
+
+If the relationship looks linear, we can quantify the strength of the relationship with the correlation coefficient.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{cor}\hlstd{(cigs}\hlopt{$}\hlstd{CO, cigs}\hlopt{$}\hlstd{tar)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\subsection*{Sum of squared residuals}
+Think back to the way that we described the distribution of a single variable. Recall that we discussed characteristics such as center, spread, and shape.  It's also useful to be able to describe the relationship of two numerical variables, such as \hlkwd{CO} and \hlkwd{tar} above.
+
+\begin{exercise}
+Looking at your plot from the previous exercise, describe the relationship between these two variables. Make sure to discuss the form, direction, and strength of the relationship as well as any unusual observations.
+\end{exercise}
+
+Just as we used the mean and standard deviation to summarize a single variable, we can summarize the relationship between these two variables by finding the line that best follows their association.  Use the following interactive function to select the line that you think does the best job of going through the cloud of points.
+\newline
+\newline
+\textbf{Note:} You need to access this function by sourcing a function on GitHub using the following commands:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{u} \hlkwb{<-} \hlstr{"https://raw.githubusercontent.com/nickreich/stat-modeling-2015/gh-pages/assets/labs/plot_ss.R"}
+\hlstd{script} \hlkwb{<-} \hlkwd{getURL}\hlstd{(u,} \hlkwc{ssl.verifypeer} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+\hlkwd{eval}\hlstd{(}\hlkwd{parse}\hlstd{(}\hlkwc{text} \hlstd{= script))}
+\hlkwd{plot_ss}\hlstd{(}\hlkwc{x} \hlstd{= cigs}\hlopt{$}\hlstd{tar,} \hlkwc{y} \hlstd{= cigs}\hlopt{$}\hlstd{CO)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+After running the last command above, you'll be prompted to click two points on the plot to define a line.  Once you've done that, the line you specified will be shown in black and the residuals in red.  Note that there are 25 residuals, one for each of the 25 observations. Recall that the residuals are the difference between the observed values and the values predicted by the line:
+
+\[ e_i = y_i - \hat{y}_i \]
+
+The most common way to do linear regression is to select the line that minimizes the sum of squared residuals.  The squared residuals are represented in this plot with blue dashed lines.
+
+\begin{exercise}
+Try running the above command again, this time with a line that is not a good fit. What happens to the squared residuals? Compare the sum of squares (given in the R output) of this poorly fit line to the first line you fit. Are you suprised at these results? 
+\end{exercise}
+
+\begin{exercise}
+Run this code several more times trying to minimize the sum of squares each time. What is the smallest sum of squares you can obtain? How does it compare to your neighbors? Compared to the first line you drew, what adjustments did you make to reduce the RSS?
+\end{exercise}
+
+\subsection*{The linear model}
+
+It is rather cumbersome to try to get the correct least squares line, i.e. the line that minimizes the sum of squared residuals, through trial and error. Instead we can use the \hlkwd{lm} function in R to fit the linear model (a.k.a. regression line).
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{m1} \hlkwb{<-} \hlkwd{lm}\hlstd{(CO} \hlopt{\mytilde} \hlstd{tar,} \hlkwc{data} \hlstd{= cigs)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+The first argument in the function \hlkwd{lm} is a formula that takes the form \hlkwd{y}\hlkwd{\texttildelow~}\hlkwd{x}.  Here it can be read that we want to make a linear model of \hlkwd{CO} as a function of \hlkwd{tar}.  The second argument specifies that R should look in the \hlkwd{cigs} data frame to find the \hlkwd{CO} and \hlkwd{tar} variables.
+
+The output of \hlkwd{lm} is an object that contains all of the information we need about the linear model that was just fit.  We can access this information using the summary function.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{summary}\hlstd{(m1)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+Let's consider this output piece by piece.  First, the formula used to describe the model is shown at the top. After the formula you find the five-number summary of the residuals. The ``Coefficients'' table shown next is key; its first column displays the linear model's y-intercept and the coefficient of \hlkwd{tar}. With this table, we can write down the least squares regression line for the linear model:
+
+\[ \hat{y} = 2.74328 + 0.80098 * tar \]
+
+One last piece of information we will discuss from the summary output is the Multiple R-squared, or more simply, $R^2$. The $R^2$ value represents the proportion of variability in the response variable that is explained by the explanatory variable. For this model, 91.68\% of the variability in carbon monoxide content is explained by the amount of tar in the cigarette.
+
+
+\begin{exercise}
+Calculate $\hat\beta_0$ and $\hat\beta_1$ from the model of \hlkwd{CO} as a function of \hlkwd{tar} by hand (i.e. using arithmetic/linear algebra and R as your calculator). Confirm that they match up with the values from the fitted model using \hlkwd{lm}.
+\end{exercise}
+
+
+\begin{exercise}
+What does the slope tell us in the context of the relationship between the amount of carbon monoxide emitted into the environment and the amount of tar in the cigarette?
+\end{exercise}
+
+\begin{exercise}
+Fit a new model \hlkwd{m2} that uses \hlkwd{weight} to predict \hlkwd{CO}.  Using the estimates from the R output, write the equation of the regression line. How much of the variability in CO emission is explained by the weight of the cigarette? Which model,  \hlkwd{m1} or  \hlkwd{m2}, would you trust more to predict CO emission? Explain.
+\end{exercise}
+
+\subsection*{Prediction and prediction errors}
+
+Let's create a scatterplot of \hlkwd{CO} versus \hlkwd{tar} with the least squares line laid on top.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{qplot}\hlstd{(tar, CO,} \hlkwc{data}\hlstd{=cigs)}
+\hlkwd{ggplot}\hlstd{(cigs,} \hlkwd{aes}\hlstd{(tar, CO))} \hlopt{+} \hlkwd{geom_point}\hlstd{()} \hlopt{+} \hlkwd{geom_smooth}\hlstd{(}\hlkwc{method}\hlstd{=}\hlstr{"lm"}\hlstd{)}
+\hlkwd{ggplot}\hlstd{(cigs,} \hlkwd{aes}\hlstd{(tar, CO))} \hlopt{+} \hlkwd{geom_point}\hlstd{()} \hlopt{+} \hlkwd{geom_smooth}\hlstd{(}\hlkwc{method}\hlstd{=}\hlstr{"lm"}\hlstd{,} \hlkwc{se}\hlstd{=}\hlnum{FALSE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+The fitted line can be used to predict $y$ at any value of $x$.  When predictions are made for values of $x$ that are beyond the range of the observed data, it is referred to as \emph{extrapolation} and is not usually recommended.  However, predictions made within the range of the data are more reliable.  They're also used to compute the residuals.
+
+\begin{exercise}
+If you saw the least squares regression line and not the actual data, how much CO (mg) would you predict to be emitted from a cigarette with 15 mg of tar? Is this an overestimate or an underestimate, and by how much? In other words, what is the residual for this prediction?
+\end{exercise}
+
+\subsection*{Model diagnostics}
+
+To assess whether the linear model is reliable, we need to check for  (1) linearity, (2) nearly normal residuals, and (3) constant variability.
+
+\begin{enumerate}
+\item Linearity: You already checked if the relationship between CO content and amount of tar is linear using a scatterplot. We should also verify this condition with a plot of the residuals vs. \hlkwd{tar}.  
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{qplot}\hlstd{(tar, m1}\hlopt{$}\hlstd{residuals,} \hlkwc{data}\hlstd{=cigs)} \hlopt{+} \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{,} \hlkwc{linetype}\hlstd{=}\hlnum{3}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{exercise}
+Is there any apparent pattern in the residuals plot? What does this indicate about the linearity of the relationship between CO content and tar?
+\end{exercise}
+
+\item Nearly normal residuals: To check this condition, we can look at a histogram
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{qplot}\hlstd{(m1}\hlopt{$}\hlstd{residuals)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+or a normal probability plot of the residuals. Recall that any code following a \hlcom{\#} is intended to be a comment that helps understand the code but is ignored by R.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{qqnorm}\hlstd{(m1}\hlopt{$}\hlstd{residuals)}
+\hlkwd{qqline}\hlstd{(m1}\hlopt{$}\hlstd{residuals)}  \hlcom{# adds diagonal line to the normal prob plot}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{exercise}
+Based on the histogram and the normal probability plot, does the nearly normal residuals condition appear to be met?
+\end{exercise}
+
+\item Constant variability:
+
+\begin{exercise}
+Based on the plot in (1), does the constant variability condition appear to be met? 
+\end{exercise}
+
+\end{enumerate}
+
+\vspace{2cm}
+
+\subsection*{On Your Own}
+
+\begin{enumerate}
+\item Produce a scatterplot of \hlkwd{CO} and \hlkwd{nicotene} and fit a linear model.  At a glance, does there seem to be a linear relationship?
+
+\item How does this relationship compare to the relationship between \hlkwd{CO} and \hlkwd{tar}? Use the R$^2$ values from the two model summaries to compare.  Does \hlkwd{nicotene} seem to predict \hlkwd{CO} better than \hlkwd{tar}?  How can you tell? 
+
+\item Which variable best predicts \hlkwd{CO} out of the three in this data set? Support your conclusion using the graphical and numerical methods we've discussed.
+
+\item Check the model diagnostics for the regression model with the variable you decided was the best predictor for CO content.
+
+\end{enumerate}
+
+\end{document}
+

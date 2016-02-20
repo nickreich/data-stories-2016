@@ -58,12 +58,12 @@ _Tues, week 5_
 
 _Thurs, week 5_
  
- - quiz 2 (15 min)
  - in-class presentations about project 1 (30 min)
  - lecture 2 finish
 
 _Tues, week 6_
  
+ - quiz 2 (15 min)
  - lecture: ch 8, fitting models
  - OI lab 1?
  

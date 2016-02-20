@@ -21,6 +21,10 @@ _Due Thursday 3/1, 5pm_
   * Run two simple linear regressions each with different predictor variables. Interpret the results. Plot a scatterplot of each regression and include the fitted line on the graph. Rescale your explanatory variables if necessary to obtain a meaningful interpretation of beta0.
 -->
 
+_Due Thursday 2/25, 5pm_
+ - Read OpenIntro Chapter 7.
+ - [Lab 2](../assets/lab2-slr/lab2-slr.pdf). You should hand in an html created with RMarkdown file that shows your code as well as has your written responses to the exercises.
+
 _Due Thursday 2/18_
 
  - Read Kaplan Chapter 8.
