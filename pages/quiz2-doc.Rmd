@@ -1,5 +1,5 @@
 ---
-title: "Interpreting Coefficients"
+title: "Quiz: Interpreting Coefficients"
 author: "Nicholas Reich, adapted from Project MOSAIC"
 date: "February 14, 2016"
 output: html_document
@@ -8,6 +8,8 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+The quiz is available at this link [http://goo.gl/forms/uEMm375GDj](http://goo.gl/forms/uEMm375GDj).
 
 ## Overview
 
