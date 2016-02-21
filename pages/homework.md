@@ -21,10 +21,19 @@ _Due Thursday 3/1, 5pm_
   * Run two simple linear regressions each with different predictor variables. Interpret the results. Plot a scatterplot of each regression and include the fitted line on the graph. Rescale your explanatory variables if necessary to obtain a meaningful interpretation of beta0.
 -->
 
+_Due Tues 3/1_
+
+ - [Project 1](project1.html): final reports due in class, also, 5-10 minute in-class presentation for each report.
+
 _Due Thursday 2/25, 5pm_
 
  - Read OpenIntro Chapter 7.
  - [Lab 2](../assets/labs/lab2-slr/lab2-slr.pdf). You should hand in an html created with RMarkdown file that shows your code as well as has your written responses to the exercises.
+
+_Due Tues 2/23, 5pm_
+
+ - draft of the follow-up [Project 1](project1.html) report due at 5pm.
+
 
 _Due Thursday 2/18_
 
