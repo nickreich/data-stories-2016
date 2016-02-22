@@ -63,8 +63,8 @@ _Thurs, week 5_
 
 _Tues, week 6_
  
- - quiz 2 (15 min)
  - lecture: linear regression
+ - quiz 2 (15 min)
  
  
  - OI lab 1?
