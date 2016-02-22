@@ -63,7 +63,7 @@ _Thurs, week 5_
 
 _Tues, week 6_
  
- - lecture: linear regression
+ - lecture 3: OI version of linear regression
  - quiz 2 (15 min)
  
  

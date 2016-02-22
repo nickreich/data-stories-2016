@@ -15,7 +15,7 @@ Week |       |     | Topic   | In-class resources | Reading
  3   | Feb | 2, 4   | Data visualization | |
  4   |     | 9, 11 | Language of Models | [Lec 2](../assets/lectures/data-viz-NHANES/Presentation-NHANES.html) | Kaplan Ch. 6, 7
  5   |     | 18     | Fitting Linear Models | | Kaplan Ch. 8
- 6   |     | 23, 25 | Linear Regression | | OpenIntro Ch. 7
+ 6   |     | 23, 25 | Linear Regression | [Lec 3](../assets/lectures/lecture3-slr/lec3-slr.pdf), [Lab 2](../assets/labs/lab2-slr/lab2-slr.pdf) | OpenIntro Ch. 7
  7   | Mar | 1, 3   | Project 1 | |
  8   |     | 8, 10 | | |
      |     | 15, 17 | Spring Break! | |
