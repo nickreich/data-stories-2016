@@ -64,7 +64,9 @@ _Thurs, week 5_
 _Tues, week 6_
  
  - quiz 2 (15 min)
- - lecture: ch 8, fitting models
+ - lecture: linear regression
+ 
+ 
  - OI lab 1?
  
 _Thurs, week 6_
