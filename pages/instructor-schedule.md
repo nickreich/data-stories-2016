@@ -72,14 +72,24 @@ _Thurs, week 6_
  - lecture 3 continued
 
 
-_Tues, week 6_
+_Tues, week 7_
 
  - finish lecture 3
  - group presentations
 
-_Thurs, week 6_
+_Thurs, week 7_
 
  - lecture 4: MLR 
+
+_Tues, week 8_
+
+ - finish lecture 4
+
+_Thurs, week 8_
+
+ - lecture 5: logistic regression
+ - wits and wagers?
+
 
 
 _unscheduled activities_ 

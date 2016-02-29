@@ -258,214 +258,423 @@ $\:$ \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Model selection methods}
+\subsection{Model selection methods: introduction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-\frametitle{Model selection strategies}
 
-\dq{Based on what we've learned so far, what are some ways you can think of that can be used to determine which variables to keep in the model and which to leave out?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}{Why are you building a model in the first place?}
+
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Model selection: realities}
+
+\centering {\em All models are wrong. Some are more useful than others.} \\ - George Box
+
+
+\bi
+    \myitem If we are asking which is the ``true" model, we will have a bad time
+	\myitem In practice, issues with sample size, collinearity, and available predictors are real problems
+	\myitem It is often possible to differentiate between better models and less-good models, though
+	\myitem The key decisions in model selection almost always involve balancing model complexity with the potential for overfitting.
+\ei
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-\frametitle{Backward-elimination}
+\subsection{Model selection methods: classes and criteria}
 
-\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\item $R^2_{adj}$ approach: 
-\begin{itemize}
-\item Start with the full model
-\item Drop one variable at a time and record $R^2_{adj}$ of each smaller model
-\item Pick the model with the highest increase in $R^2_{adj}$
-\item Repeat until none of the models yield an increase in $R^2_{adj}$
-\end{itemize}
 
-\item p-value approach: 
-\begin{itemize}
-\item Start with the full model
-\item Drop the variable with the highest p-value and refit a smaller model
-\item Repeat until all variables left in the model are significant
-\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\end{enumerate}
+\begin{frame}{Basic idea for model selection}
+
+\begin{block}{A very general algorithm}
+\bi
+        \myitem Specify a ``class'' of models
+        \myitem Define a criterion to quantify the fit of each model in the class
+        \myitem Select the model that optimizes the criterion you're using
+        \myitem Subject the selected model to model checking/diagnostics, possibly adjust interpretations as needed.
+\ei
+\end{block}
+
+Again, we're focusing on $f(x)$ in the model specification. Once you've selected a model, you should subject it to regression diagnostics -- which might change or augment the class of models you specify or alter your criterion.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Classes of models}
+
+\begin{block}{Some examples of classes of models}
+\bi
+        \myitem Linear models including all subsets of $x_1, ..., x_p$
+        \myitem Linear models including all subsets of $x_1, ..., x_p$ and their first order interactions
+        \myitem ...
+\ei
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Popular criteria}
+
+\bi
+        \myitem Adjusted $R^2$
+        \myitem Residual mean square error
+        \myitem Akaike Information Criterion (AIC)
+        \myitem Bayes Information Criterion (BIC)
+    	\myitem Cross-validated error (similar to Prediction RSS, aka PRESS)
+        \myitem $F$- or $t$-tests (via stepwise selection)
+        \myitem Likelihood ratio tests (F-tests)
+\ei
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Sidebar: Confusing notation about $p$}
+
+\begin{block}{$p$ can mean different things}
+\bi
+        \myitem $p$ can be the number of covariates you have in your model (not including your column of 1s and the intercept
+        \myitem $p$ can be the number of betas you estimate, including $\beta_0$. 
+\ei
+
+In these slides, $p$ is the former: the number of covariates.
+
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{AIC}
+
+AIC (``Akaike Information Criterion") measures goodness-of-fit through RSS (equivalently, log likelihood) and penalizes model size:
+$$ AIC = n \log(RSS/n) + 2(p+1) $$
+\bi
+        \myitem Small AIC's are better, but scores are not directly interpretable
+        \myitem Penalty on model size tries to induce {\it parsimony}
+\ei
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of AIC in practice}
+
+\includegraphics[width=.8\linewidth]{8-2_model_select/figures/AICExample.pdf}
+
+\tiny Reich et al. (2013) {\em Journal of the Royal Society Interface}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{BIC}
+
+BIC (``Bayes Information Criterion") similarly measures goodness-of-fit through RSS (equivalently, log likelihood) and penalizes model size:
+$$ BIC = n \log(RSS/n) + (p+1) \log(n) $$
+\bi
+        \myitem Small BIC's are better, but scores are not directly interpretable
+	\myitem AIC and BIC measure goodness-of-fit through RSS, but use different penalties for model size. They won't always give the same answer
+\ei
+
+
+Bonus link! \href{http://emdbolker.wikidot.com/blog:aic-vs-bic}{Bolker on AIC vs. BIC}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of BIC in practice}
+
+\includegraphics[width=\linewidth]{8-2_model_select/figures/modelSelectionExample.png}
+
+\tiny  Vasantha and Venkatesan (2014) {\em PLoS ONE}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Example of model selection in practice}
+
+\includegraphics[width=.8\linewidth]{8-2_model_select/figures/modelSelectionExample2.png}
+
+\tiny  Croudace et al (2003) {\em Amer J Epidemiology}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[shrink]
-\frametitle{Backward-elimination: $R^2_{adj}$ approach}
-
-\vspace{-0.15cm}
-
-{\tiny
-\begin{tabular}{l | l | c}
-\textbf{Step}		& \textbf{Variables included}	& $\mathbf{R^2_{adj}}$ \\
-\hline
-Full		& beauty + gender + age + formal + lower + native + minority + students + tenure & \red{0.0839} \pause \\
-\hline
-Step 1 	& gender + age + formal + lower + native + minority + students + tenure		& 0.0642 \\
-		& beauty + age + formal + lower + native + minority + students + tenure		& 0.0557 \\
-		& beauty + gender + formal + lower + native + minority + students + tenure	& 0.0706 \\
-		& beauty + gender + age + lower + native + minority + students + tenure		& 0.0777 \\
-		& beauty + gender + age + formal + native + minority + students + tenure		& 0.0837 \\
-		& beauty + gender + age + formal + lower + minority + students + tenure		& 0.0788 \\
-		& beauty + gender + age + formal + lower + native + students + tenure		& \red{0.0842} \\
-		& beauty + gender + age + formal + lower + native + minority + tenure		& 0.0838 \\
-		& beauty + gender + age + formal + lower + native + minority + students		& 0.0733 \pause \\
-\hline		
-Step 2	& gender + age + formal + lower + native + students + tenure 				& 0.0647 \\
-		& beauty + age + formal + lower + native + students + tenure 				& 0.0543 \\
-		& beauty + gender + formal + lower + native + students + tenure 			& 0.0708 \\
-		& beauty + gender + age + lower + native + students + tenure 				&0.0776  \\
-		& beauty + gender + age + formal + native + students + tenure 			& \red{0.0846} \\
-		& beauty + gender + age + formal + lower + native + tenure 				& 0.0844 \\
-		& beauty + gender + age + formal + lower + native + students 				& 0.0725 \pause \\
-\hline
-Step 3	& gender + age + formal + native + students + tenure 					& 0.0653 \\
-		& beauty + age + formal + native + students + tenure					& 0.0534 \\
-		& beauty + gender + formal + native + students + tenure					& 0.0707 \\
-		& beauty + gender + age + native + students + tenure					& 0.0786 \\
-		& beauty + gender + age + formal + students + tenure					& 0.0756 \\
-		& beauty + gender + age + formal + native + tenure						& \red{0.0855} \\
-		& beauty + gender + age + formal + native + students					& 0.0713 \pause \\
-\hline
-Step 4	& gender + age + formal + native + tenure 							& 0.0667 \\
-		& beauty + age + formal + native + tenure								& 0.0553 \\
-		& beauty + gender + formal + native + tenure							& 0.0723 \\
-		& beauty + gender + age + native + tenure							& 0.0806 \\
-		& beauty + gender + age + formal + tenure							& 0.0773 \\
-		& beauty + gender + age + formal + native							& 0.0713 \\
-\end{tabular}
-}
-
-\end{frame}
+\subsection{Model selection methods: alternatives}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]
-\frametitle{\texttt{step} function in R}
 
-{\scriptsize
-\begin{verbatim}
-Call:
-lm(formula = profevaluation ~ beauty + gender + age + formal + 
-    native + tenure, data = d)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Coefficients:
-       (Intercept)              beauty          gendermale  
-          4.628435            0.105546            0.208079  
-               age           formalyes   nativenon english  
-         -0.008844            0.132422           -0.243003  
-tenuretenure track       tenuretenured  
-         -0.206784           -0.175967  
-\end{verbatim}
-}
 
-$\:$
+\begin{frame}{Sequential variable selection methods}
 
-\pause
-Best model: beauty + gender + age + formal + native + tenure
+\begin{block}{PROCEED WITH CAUTION: Stepwise selection methods are dangerous if you want accurate inferences}
+\bi
+    \myitem General idea: add/remove variables sequentially.
+    \myitem There are many potential models -- usually exhausting the model space is difficult or infeasible
+	\myitem Stepwise methods don't consider all possibilities
+    \myitem One paper$^*$ showed that stepwise analyses produced models that...
+        \bi
+                \myitem represented noise 20-75\% of the time
+                \myitem contained $<$50\% of actual predictors
+                \myitem correlation btw predictors $\longrightarrow$ including more predictors
+                \myitem number of predictors correlated with number of noise predictors included
+        \ei
+\ei
+\end{block}
+\tiny $^*$ Derksen and Keselman (1992) {\em British J Math Stat Psych}
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-\frametitle{Backward-elimination: $p-value$ approach}
+\begin{frame}{A more modern approach to variable selection}
 
-{\tiny
-\begin{tabular}{l | rrrrrrrrrr }
-\textbf{Step}		& \multicolumn{10}{c}{ \textbf{Variables included \& p-value} } \\
-\hline
-Full		& beauty	& gender		& age	& formal		& lower 	& native	 	& minority		& students	& tenure		& tenure \\
-		& 		& male		& 		& yes		& yes	 & non english	& yes		& 			& tenure track	& tenured \\
-		&  0.00 	&  0.00 		& 0.01	& 0.04		& 0.29	& 0.06		& \red{0.35}	& 0.30		& 0.02		& 0.02 \pause \\
-\hline
-Step 1	& beauty	& gender		& age	& formal		& lower 		& native	 	& 			& students	& tenure		& tenure \\
-		& 		& male		& 		& yes		& yes		& non english	& 			& 			& tenure track	& tenured \\
-		&  0.00 	&  0.00 		& 0.01	& 0.04		& \red{0.38}	& 0.03		&			& 0.34		& 0.02		& 0.01 \pause\\
-\hline
-Step 2	& beauty	& gender		& age	& formal		& 	 		& native	 	& 			& students	& tenure		& tenure \\
-		& 		& male		& 		& yes		& 			& non english	& 			& 			& tenure track	& tenured \\
-		&  0.00 	&  0.00 		& 0.01	& 0.05		& 			& 0.02		&			& \red{0.44}	& 0.01		& 0.01\pause \\
-\hline
-Step 3 	& beauty	& gender		& age	& formal		& 	 		& native	 	& 			& 			& tenure		& tenure \\
-		& 		& male		& 		& yes		& 			& non english	& 			& 			& tenure track	& tenured \\
-		&  0.00 	&  0.00 		& 0.01	& \red{0.06}	& 			& 0.02		&			& 			& 0.01		& 0.01 \pause \\
-\hline
-Step 	4	& beauty	& gender		& age	& 			& 	 		& native	 	& 			& 			& tenure		& tenure \\
-		& 		& male		& 		& 			& 			& non english	& 			& 			& tenure track	& tenured \\
-		&  0.00 	&  0.00 		& 0.01	&			& 			& \red{0.06}	&			& 			& 0.01		& 0.01 \pause \\
-\hline
-Step 5 	& beauty	& gender		& age	& 			& 	 		& 		 	& 			& 			& tenure		& tenure \\
-		& 		& male		& 		& 			& 			&			& 			& 			& tenure track	& tenured \\
-		&  0.00 	&  0.00 		& 0.01	&			& 			& 			&			& 			& 0.01		& 0.01 \\
-\end{tabular}
-}
+\begin{block}{Penalized regression (a.k.a. ``shrinkage'', ``regularization'')} 
 
-$\:$ \\
+\bi
+    \myitem adds an explicit penalty to the least squares criterion
+	\myitem keeps regression coefficients from being too large, or can shrink coefficients to zero
+    \myitem Keywords for methods: LASSO, Ridge Regression
+    \myitem More in Biostat Methods 3 (fall semester)!
+\ei
+\end{block}
 
-\pause
-Best model: beauty + gender + age + tenure
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Forward-selection}
-
-\begin{enumerate}
-
-\item $R^2_{adj}$ approach: 
-\begin{itemize}
-\item Start with regressions of response vs. each explanatory variable
-\item Pick the model with the highest $R^2_{adj}$
-\item Add the remaining variables one at a time to the existing model, and once again pick the model  with the highest $R^2_{adj}$
-\item Repeat until the addition of any of the remanning variables does not result in a higher $R^2_{adj}$
-\end{itemize}
-
-\item $p-value$ approach: 
-\begin{itemize}
-\item Start with regressions of response vs. each explanatory variable
-\item Pick the variable with the lowest significant p-value 
-\item Add the remaining variables one at a time to the existing model, and pick the variable with the lowest significant p-value
-\item Repeat until any of the remaining variables does not have a significant p-value
-\end{itemize}
-
-\textit{In forward-selection the p-value approach isn't any simpler (you still need to fit a bunch of models), so there's almost no incentive to use it.}
-
-\end{enumerate}
+Whole branches of modern statistics are devoted to figuring out what to do when $p\geq n$. 
 
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[fragile]
-\frametitle{Selected model}
-
-\begin{center}
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & 4.6284 & 0.1673 & 27.66 & 0.00 \\ 
-  beauty & 0.1055 & 0.0328 & 3.21 & 0.00 \\ 
-  gender.male & 0.2081 & 0.0519 & 4.01 & 0.00 \\ 
-  age & -0.0088 & 0.0032 & -2.75 & 0.01 \\ 
-  formal.yes & 0.1324 & 0.0714 & 1.85 & 0.06 \\ 
-  native:non english & -0.2430 & 0.1080 & -2.25 & 0.02 \\ 
-  tenure:tenure track & -0.2068 & 0.0839 & -2.46 & 0.01 \\ 
-  tenure:tenured & -0.1760 & 0.0641 & -2.74 & 0.01 \\ 
-   \hline
-\end{tabular}
-\end{center}
-
-\end{frame}
+% \begin{frame}
+% \frametitle{Model selection strategies}
+% 
+% \dq{Based on what we've learned so far, what are some ways you can think of that can be used to determine which variables to keep in the model and which to leave out?}
+% 
+% \end{frame}
+% 
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% \begin{frame}
+% \frametitle{Backward-elimination}
+% 
+% \begin{enumerate}
+% 
+% \item $R^2_{adj}$ approach: 
+% \begin{itemize}
+% \item Start with the full model
+% \item Drop one variable at a time and record $R^2_{adj}$ of each smaller model
+% \item Pick the model with the highest increase in $R^2_{adj}$
+% \item Repeat until none of the models yield an increase in $R^2_{adj}$
+% \end{itemize}
+% 
+% \item p-value approach: 
+% \begin{itemize}
+% \item Start with the full model
+% \item Drop the variable with the highest p-value and refit a smaller model
+% \item Repeat until all variables left in the model are significant
+% \end{itemize}
+% 
+% \end{enumerate}
+% 
+% \end{frame}
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% \begin{frame}[shrink]
+% \frametitle{Backward-elimination: $R^2_{adj}$ approach}
+% 
+% \vspace{-0.15cm}
+% 
+% {\tiny
+% \begin{tabular}{l | l | c}
+% \textbf{Step}		& \textbf{Variables included}	& $\mathbf{R^2_{adj}}$ \\
+% \hline
+% Full		& beauty + gender + age + formal + lower + native + minority + students + tenure & \red{0.0839} \pause \\
+% \hline
+% Step 1 	& gender + age + formal + lower + native + minority + students + tenure		& 0.0642 \\
+% 		& beauty + age + formal + lower + native + minority + students + tenure		& 0.0557 \\
+% 		& beauty + gender + formal + lower + native + minority + students + tenure	& 0.0706 \\
+% 		& beauty + gender + age + lower + native + minority + students + tenure		& 0.0777 \\
+% 		& beauty + gender + age + formal + native + minority + students + tenure		& 0.0837 \\
+% 		& beauty + gender + age + formal + lower + minority + students + tenure		& 0.0788 \\
+% 		& beauty + gender + age + formal + lower + native + students + tenure		& \red{0.0842} \\
+% 		& beauty + gender + age + formal + lower + native + minority + tenure		& 0.0838 \\
+% 		& beauty + gender + age + formal + lower + native + minority + students		& 0.0733 \pause \\
+% \hline		
+% Step 2	& gender + age + formal + lower + native + students + tenure 				& 0.0647 \\
+% 		& beauty + age + formal + lower + native + students + tenure 				& 0.0543 \\
+% 		& beauty + gender + formal + lower + native + students + tenure 			& 0.0708 \\
+% 		& beauty + gender + age + lower + native + students + tenure 				&0.0776  \\
+% 		& beauty + gender + age + formal + native + students + tenure 			& \red{0.0846} \\
+% 		& beauty + gender + age + formal + lower + native + tenure 				& 0.0844 \\
+% 		& beauty + gender + age + formal + lower + native + students 				& 0.0725 \pause \\
+% \hline
+% Step 3	& gender + age + formal + native + students + tenure 					& 0.0653 \\
+% 		& beauty + age + formal + native + students + tenure					& 0.0534 \\
+% 		& beauty + gender + formal + native + students + tenure					& 0.0707 \\
+% 		& beauty + gender + age + native + students + tenure					& 0.0786 \\
+% 		& beauty + gender + age + formal + students + tenure					& 0.0756 \\
+% 		& beauty + gender + age + formal + native + tenure						& \red{0.0855} \\
+% 		& beauty + gender + age + formal + native + students					& 0.0713 \pause \\
+% \hline
+% Step 4	& gender + age + formal + native + tenure 							& 0.0667 \\
+% 		& beauty + age + formal + native + tenure								& 0.0553 \\
+% 		& beauty + gender + formal + native + tenure							& 0.0723 \\
+% 		& beauty + gender + age + native + tenure							& 0.0806 \\
+% 		& beauty + gender + age + formal + tenure							& 0.0773 \\
+% 		& beauty + gender + age + formal + native							& 0.0713 \\
+% \end{tabular}
+% }
+% 
+% \end{frame}
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% \begin{frame}[fragile]
+% \frametitle{\texttt{step} function in R}
+% 
+% {\scriptsize
+% \begin{verbatim}
+% Call:
+% lm(formula = profevaluation ~ beauty + gender + age + formal + 
+%     native + tenure, data = d)
+% 
+% Coefficients:
+%        (Intercept)              beauty          gendermale  
+%           4.628435            0.105546            0.208079  
+%                age           formalyes   nativenon english  
+%          -0.008844            0.132422           -0.243003  
+% tenuretenure track       tenuretenured  
+%          -0.206784           -0.175967  
+% \end{verbatim}
+% }
+% 
+% $\:$
+% 
+% \pause
+% Best model: beauty + gender + age + formal + native + tenure
+% 
+% \end{frame}
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% \begin{frame}
+% \frametitle{Backward-elimination: $p-value$ approach}
+% 
+% {\tiny
+% \begin{tabular}{l | rrrrrrrrrr }
+% \textbf{Step}		& \multicolumn{10}{c}{ \textbf{Variables included \& p-value} } \\
+% \hline
+% Full		& beauty	& gender		& age	& formal		& lower 	& native	 	& minority		& students	& tenure		& tenure \\
+% 		& 		& male		& 		& yes		& yes	 & non english	& yes		& 			& tenure track	& tenured \\
+% 		&  0.00 	&  0.00 		& 0.01	& 0.04		& 0.29	& 0.06		& \red{0.35}	& 0.30		& 0.02		& 0.02 \pause \\
+% \hline
+% Step 1	& beauty	& gender		& age	& formal		& lower 		& native	 	& 			& students	& tenure		& tenure \\
+% 		& 		& male		& 		& yes		& yes		& non english	& 			& 			& tenure track	& tenured \\
+% 		&  0.00 	&  0.00 		& 0.01	& 0.04		& \red{0.38}	& 0.03		&			& 0.34		& 0.02		& 0.01 \pause\\
+% \hline
+% Step 2	& beauty	& gender		& age	& formal		& 	 		& native	 	& 			& students	& tenure		& tenure \\
+% 		& 		& male		& 		& yes		& 			& non english	& 			& 			& tenure track	& tenured \\
+% 		&  0.00 	&  0.00 		& 0.01	& 0.05		& 			& 0.02		&			& \red{0.44}	& 0.01		& 0.01\pause \\
+% \hline
+% Step 3 	& beauty	& gender		& age	& formal		& 	 		& native	 	& 			& 			& tenure		& tenure \\
+% 		& 		& male		& 		& yes		& 			& non english	& 			& 			& tenure track	& tenured \\
+% 		&  0.00 	&  0.00 		& 0.01	& \red{0.06}	& 			& 0.02		&			& 			& 0.01		& 0.01 \pause \\
+% \hline
+% Step 	4	& beauty	& gender		& age	& 			& 	 		& native	 	& 			& 			& tenure		& tenure \\
+% 		& 		& male		& 		& 			& 			& non english	& 			& 			& tenure track	& tenured \\
+% 		&  0.00 	&  0.00 		& 0.01	&			& 			& \red{0.06}	&			& 			& 0.01		& 0.01 \pause \\
+% \hline
+% Step 5 	& beauty	& gender		& age	& 			& 	 		& 		 	& 			& 			& tenure		& tenure \\
+% 		& 		& male		& 		& 			& 			&			& 			& 			& tenure track	& tenured \\
+% 		&  0.00 	&  0.00 		& 0.01	&			& 			& 			&			& 			& 0.01		& 0.01 \\
+% \end{tabular}
+% }
+% 
+% $\:$ \\
+% 
+% \pause
+% Best model: beauty + gender + age + tenure
+% 
+% \end{frame}
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% \begin{frame}
+% \frametitle{Forward-selection}
+% 
+% \begin{enumerate}
+% 
+% \item $R^2_{adj}$ approach: 
+% \begin{itemize}
+% \item Start with regressions of response vs. each explanatory variable
+% \item Pick the model with the highest $R^2_{adj}$
+% \item Add the remaining variables one at a time to the existing model, and once again pick the model  with the highest $R^2_{adj}$
+% \item Repeat until the addition of any of the remanning variables does not result in a higher $R^2_{adj}$
+% \end{itemize}
+% 
+% \item $p-value$ approach: 
+% \begin{itemize}
+% \item Start with regressions of response vs. each explanatory variable
+% \item Pick the variable with the lowest significant p-value 
+% \item Add the remaining variables one at a time to the existing model, and pick the variable with the lowest significant p-value
+% \item Repeat until any of the remaining variables does not have a significant p-value
+% \end{itemize}
+% 
+% \textit{In forward-selection the p-value approach isn't any simpler (you still need to fit a bunch of models), so there's almost no incentive to use it.}
+% 
+% \end{enumerate}
+% 
+% \end{frame}
+% 
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% \begin{frame}[fragile]
+% \frametitle{Selected model}
+% 
+% \begin{center}
+% \begin{tabular}{rrrrr}
+%   \hline
+%  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+%   \hline
+% (Intercept) & 4.6284 & 0.1673 & 27.66 & 0.00 \\ 
+%   beauty & 0.1055 & 0.0328 & 3.21 & 0.00 \\ 
+%   gender.male & 0.2081 & 0.0519 & 4.01 & 0.00 \\ 
+%   age & -0.0088 & 0.0032 & -2.75 & 0.01 \\ 
+%   formal.yes & 0.1324 & 0.0714 & 1.85 & 0.06 \\ 
+%   native:non english & -0.2430 & 0.1080 & -2.25 & 0.02 \\ 
+%   tenure:tenure track & -0.2068 & 0.0839 & -2.46 & 0.01 \\ 
+%   tenure:tenured & -0.1760 & 0.0641 & -2.74 & 0.01 \\ 
+%    \hline
+% \end{tabular}
+% \end{center}
+% 
+% \end{frame}
