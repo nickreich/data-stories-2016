@@ -66,15 +66,25 @@ _Tues, week 6_
  - lecture 3: OI version of linear regression
  - quiz 2 (15 min)
  
- 
- - OI lab 1?
- 
 _Thurs, week 6_
 
- - group project peer reviews (25 min)
- 
- - group presentations about [blog post]( http://simplystatistics.org/2016/02/01/a-menagerie-of-messed-up-data-analyses-and-how-to-avoid-them/)
+ - one presentation
+ - lecture 3 continued
 
+
+_Tues, week 6_
+
+ - finish lecture 3
+ - group presentations
+
+_Thurs, week 6_
+
+ - lecture 4: MLR 
+
+
+_unscheduled activities_ 
+
+ - group presentations about [blog post]( http://simplystatistics.org/2016/02/01/a-menagerie-of-messed-up-data-analyses-and-how-to-avoid-them/)
  - coin-flipping?
 
 

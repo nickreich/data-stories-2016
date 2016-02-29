@@ -13,6 +13,7 @@ The source code and PDF files associated with the lectures will be posted below 
 * Lecture 1: Introduction to Regression \[  [S](../assets/lectures/lecture1-intro-regression/lecture1-intro-regression.pdf) \]
 * Lecture 2: The Language of Models \[  [S](../assets/lectures/lecture2-model-language/lecture2-model-language.pdf) \]
 * Lecture 3: Simple Linear Regression \[ [S](../assets/lectures/lecture3-slr/lec3-slr.pdf) \}
+* Lecture 4: Multiple Linear Regression \[ [S](../assets/lectures/lecture4-slr/lec4-mlr.pdf) \}
 
 * Data Viz 1: Principles of Data Visualization \[  [S](../assets/lectures/data-viz-principles/data-viz-principles-and-EDA.html) \]
 * Data Viz 2: Data Visualization (ggplot2) \[  [S](../assets/lectures/data-viz-ggplot/data-viz-ggplot.html) \]
@@ -20,7 +21,8 @@ The source code and PDF files associated with the lectures will be posted below 
 
 
 * [Lab 1: iPod shuffle](../assets/labs/lab1-ipod-shuffle/lab1-ipod-shuffle-individual.html)
-* [Lab 2: Linear regression](../assets/labs/lab2-slr/lab2-slr.pdf)
+* [Lab 2: Linear Regression](../assets/labs/lab2-slr/lab2-slr.pdf)
+* [Lab 3: Multiple Linear Regression](../assets/labs/lab3-mlr-practice/lab3-mlr-practice.pdf)
 
 <!--  \|  [A](../assets/lectures/lecture1-intro-regression/lecture1-intro-regression-annotated.pdf) \]
 * Lecture 2: Simple Linear Regression and Least Squares \[  [S](../assets/lectures/lecture2-slr-basics/lecture2-slr-basics.pdf) \| [A](../assets/lectures/lecture2-slr-basics/lecture2-slr-basics-annotated.pdf)  \]

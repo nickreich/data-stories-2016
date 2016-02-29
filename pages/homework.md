@@ -8,18 +8,9 @@ Homework assignments will be posted here, in general organized by due date. Unle
 
 **Collaboration on homework is expected and encouraged, although you must write up your own assignment. No copying or cutting and pasting.**
 
-<!--
-_Due Thursday 3/1, 5pm_
+_Due Thursday 3/10, 5pm_
 
- - * Create a short reproducible document (using RMarkdown) that describes the basic structure of a dataset and summarizes some key features of the data using a few key tables and figures. Choose a dataset that you have not used before from [these datasets](datasets.html),  the ones in the class Google Drive, or some other dataset that interests you. _Be sure to pick a dataset that has a continuous variable that you can use as an outcome variable in a linear regression model._ Your write-up should address the following points:
-  * What is the background/context for this data? 
-  * Data management: How many observations are there? What is the unit of observation? What are the key response variable(s) and explanatory variables? Is there any missing data? If so, are there any obvious patterns to the missingness? 
-  * Choose 4 to 10 key variables from your dataset (including the outcome variable). 
-      - Include a table that lists for each chosen variable the name, definition, type of variable (i.e. categorical, continuous, binary), and the number of missing observations. 
-      - Choose at least two of these variables and provide figures that show their univariate distributions. Describe the plotted distributions in words. 
-      - Provide a ggpairs() plot that provides a visual overview of the chosen variables.
-  * Run two simple linear regressions each with different predictor variables. Interpret the results. Plot a scatterplot of each regression and include the fitted line on the graph. Rescale your explanatory variables if necessary to obtain a meaningful interpretation of beta0.
--->
+ - [Lab 3](../assets/labs/lab3-mlr-practice/lab3-mlr-practice.pdf)
 
 _Due Tues 3/1_
 
