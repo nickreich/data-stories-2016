@@ -79,6 +79,7 @@ _Tues, week 7_
 
 _Thurs, week 7_
 
+ - dan gerber announcements
  - lecture 4: MLR 
 
 _Tues, week 8_
