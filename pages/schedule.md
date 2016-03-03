@@ -16,7 +16,7 @@ Week |       |     | Topic   | In-class resources | Reading
  4   |     | 9, 11 | Language of Models | [Lec 2](../assets/lectures/data-viz-NHANES/Presentation-NHANES.html) | Kaplan Ch. 6, 7
  5   |     | 18     | Fitting Linear Models | | Kaplan Ch. 8
  6   |     | 23, 25 | Linear Regression | [Lec 3](../assets/lectures/lecture3-slr/lec3-slr.pdf), [Lab 2](../assets/labs/lab2-slr/lab2-slr.pdf) | OpenIntro Ch. 7
- 7   | Mar | 1, 3   | Multiple Linear Regression | [Lec 4](../assets/lectures/lecture4-slr/lec4-mlr.pdf) | OpenIntro Ch. 8
+ 7   | Mar | 1, 3   | Multiple Linear Regression | [Lec 4](../assets/lectures/lecture4-mlr/lec4-mlr.pdf) | OpenIntro Ch. 8
  8   |     | 8, 10 | Multiple Linear Regression | Kaplan Ch. 11, 12 |
      |     | 15, 17 | Spring Break! | |
  9   |     | 22, 24 | | |
