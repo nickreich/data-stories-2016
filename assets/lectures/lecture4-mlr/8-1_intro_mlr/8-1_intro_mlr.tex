@@ -77,7 +77,7 @@
 
 \begin{enumerate}[(a)]
 \item Weights of 80\% of the books can be predicted accurately using this model.
-\solnMult{Books that are 10 cm$^\text{3}$ over average are expected to weigh 7 g over average.}
+\solnMult{We would expect a book that is 10 cm$^\text{3}$ bigger than another expected to weigh 7 g more.}
 \item The correlation between weight and volume is $R = 0.80^2 = 0.64$.
 \item The model underestimates the weight of the book with the highest volume.
 \end{enumerate}
@@ -201,10 +201,10 @@ F-statistic: 76.73 on 2 and 12 DF,  p-value: 1.455e-07
 }
 
 \begin{enumerate}[(a)]
-\item response: weight, explanatory: volume, paperback cover
-\item response: weight, explanatory: volume, hardcover cover
-\item response: volume, explanatory: weight, cover type
-\solnMult{response: weight, explanatory: volume, cover type}
+\item {\bf response}: weight; {\bf explanatory}: volume, paperback cover
+\item {\bf response}: weight; {\bf explanatory}: volume, hardcover cover
+\item {\bf response}: volume; {\bf explanatory}: weight, cover type
+\solnMult{{\bf response}: weight; {\bf explanatory}: volume, cover type}
 \end{enumerate}
 
 \end{frame}
@@ -218,11 +218,11 @@ F-statistic: 76.73 on 2 and 12 DF,  p-value: 1.455e-07
 \begin{center}
 \begin{tabular}{rrrrr}
   \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
   \hline
-(Intercept) & 197.96 & 59.19 & 3.34 & 0.01 \\ 
-  volume & 0.72 & 0.06 & 11.67 & 0.00 \\ 
-  cover:pb & -184.05 & 40.49 & -4.55 & 0.00 \\ 
+(Intercept) & 197.96 & 59.19 & 3.34 & 0.01 \\
+  volume & 0.72 & 0.06 & 11.67 & 0.00 \\
+  cover:pb & -184.05 & 40.49 & -4.55 & 0.00 \\
    \hline
 \end{tabular}
 \end{center}
@@ -463,8 +463,34 @@ than those whose moms did not work.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \begin{frame}
-\frametitle{Revisit: Modeling poverty}
+\frametitle{Modeling poverty}
+
+% \begin{verbatim}
+% download.file(``http://www.openintro.org/stat/data/cc.RData'', destfile = ``cc.RData'')
+% load(``cc.RData'')
+% \end{verbatim}
+
+{\bf Description}: Data for 3083 counties in the United States, including variables for demographic, financial, education, and other characteristics.
+
+{\bf Source}: Census website.
+
+\begin{itemize}
+    \item FIPS: FIPS code.
+    \item poverty: Percent below poverty level (2006-2010).
+    \item pop2010: 2010 county population.
+    \item female\_house: Percent of population that lives in a female-owned house (2010).
+    \item metro\_res: Percent of population living in metropolitan area.
+    \item hs\_grad: Percent of population that is a high school graduate (2006-2010).
+    \item ...
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Modeling poverty}
 
 \vspace{-0.75cm}
 
@@ -651,61 +677,61 @@ Total & 50 &    480.25\\
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Collinearity between explanatory variables}
-
-\hl{poverty vs. \% female head of household}
-\begin{center}
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & 3.31 & 1.90 & 1.74 & 0.09 \\ 
-  female\_house & \only<1>{0.69} \only<2>{\red{0.69}} & 0.16 & 4.32 & 0.00 \\ 
-   \hline
-\end{tabular}
-\end{center}
-
-$\:$ \\
-
-\hl{poverty vs. \% female head of household and \% female hh}
-\begin{center}
-\begin{tabular}{rrrrr}
-  \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-(Intercept) & -2.58 & 5.78 & -0.45 & 0.66 \\ 
-  female\_house & \only<1>{0.89} \only<2>{\red{0.89}}  & 0.24 & 3.67 & 0.00 \\ 
-  white & 0.04 & 0.04 & 1.08 & 0.29 \\   
-   \hline
-\end{tabular}
-\end{center}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Collinearity between explanatory variables (cont.)}
-
-\begin{itemize}
-
-\item Two predictor variables are said to be collinear when they are correlated, and this \hl{collinearity} complicates model estimation. \\
-\Remember{Predictors are also called explanatory or \underline{independent} variables. Ideally, they would be independent of each other.}
-
-\pause
-
-\item We don't like adding predictors that are associated with each other to the model, because often times the addition of such variable brings nothing to the table. Instead, we prefer the simplest best model, i.e. \hl{parsimonious} model.
-
-\pause
-
-\item While it's impossible to avoid collinearity from arising in observational data, experiments are usually designed to prevent correlation among predictors.
-
-\end{itemize}
-
-\end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% \begin{frame}
+% \frametitle{Collinearity between explanatory variables}
+% 
+% \hl{poverty vs. \% female head of household}
+% \begin{center}
+% \begin{tabular}{rrrrr}
+%   \hline
+%  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+%   \hline
+% (Intercept) & 3.31 & 1.90 & 1.74 & 0.09 \\ 
+%   female\_house & \only<1>{0.69} \only<2>{\red{0.69}} & 0.16 & 4.32 & 0.00 \\ 
+%    \hline
+% \end{tabular}
+% \end{center}
+% 
+% $\:$ \\
+% 
+% \hl{poverty vs. \% female head of household and \% female hh}
+% \begin{center}
+% \begin{tabular}{rrrrr}
+%   \hline
+%  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+%   \hline
+% (Intercept) & -2.58 & 5.78 & -0.45 & 0.66 \\ 
+%   female\_house & \only<1>{0.89} \only<2>{\red{0.89}}  & 0.24 & 3.67 & 0.00 \\ 
+%   white & 0.04 & 0.04 & 1.08 & 0.29 \\   
+%    \hline
+% \end{tabular}
+% \end{center}
+% 
+% \end{frame}
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% \begin{frame}
+% \frametitle{Collinearity between explanatory variables (cont.)}
+% 
+% \begin{itemize}
+% 
+% \item Two predictor variables are said to be collinear when they are correlated, and this \hl{collinearity} complicates model estimation. \\
+% \Remember{Predictors are also called explanatory or \underline{independent} variables. Ideally, they would be independent of each other.}
+% 
+% \pause
+% 
+% \item We don't like adding predictors that are associated with each other to the model, because often times the addition of such variable brings nothing to the table. Instead, we prefer the simplest best model, i.e. \hl{parsimonious} model.
+% 
+% \pause
+% 
+% \item While it's impossible to avoid collinearity from arising in observational data, experiments are usually designed to prevent correlation among predictors.
+% 
+% \end{itemize}
+% 
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
