@@ -84,11 +84,11 @@ _Thurs, week 7_
 
 _Tues, week 8_
 
- - finish lecture 4
+ - lecture 5: multiple linear regression: inference
+ - MAP
 
 _Thurs, week 8_
 
- - lecture 5: logistic regression
  - wits and wagers?
 
 
