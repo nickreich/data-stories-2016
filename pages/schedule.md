@@ -17,7 +17,7 @@ Week |       |     | Topic   | In-class resources | Reading
  5   |     | 18     | Fitting Linear Models | | Kaplan Ch. 8
  6   |     | 23, 25 | Linear Regression | [Lec 3](../assets/lectures/lecture3-slr/lec3-slr.pdf), [Lab 2](../assets/labs/lab2-slr/lab2-slr.pdf) | OpenIntro Ch. 7
  7   | Mar | 1, 3   | Multiple Linear Regression | [Lec 4](../assets/lectures/lecture4-mlr/lec4-mlr.pdf) | OpenIntro Ch. 8
- 8   |     | 8, 10 | Multiple Linear Regression | [Lec 5](../assets/lectures/lecture5-mlr-inference/lec5-mlr-inference.pdf)] | Kaplan Ch. 11, 12 
+ 8   |     | 8, 10 | Multiple Linear Regression | [Lec 5](../assets/lectures/lecture5-mlr-inference/lec5-mlr-inference.pdf) | Kaplan Ch. 11, 12 
      |     | 15, 17 | Spring Break! | |
  9   |     | 22, 24 | Career Fair | |
  10  |     | 29, 31  | | |
