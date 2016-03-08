@@ -11,7 +11,7 @@
 %        The following variables are assumed by the standard preamble:
 %        Global variable containing module name:
 
-\title{Multiple Linear Regression: \\ confidence and colinearity}
+\title{Multiple Linear Regression: \\ collinearity, model selection}
 %	Global variable containing module shortname:
 %		(Currently unused, may be used in future.)
 \newcommand{\ModuleShortname}{multRegression}
@@ -68,7 +68,6 @@ options(width=60)
 @
 
 \bi
-    \myitem estimation and our confidence in our model
     \myitem collinearity and non-identifiability
     \myitem categorical predictors
 \ei
@@ -295,9 +294,9 @@ summary(mlr6)$coef
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]{Using VIFs: lung data}
+\begin{frame}[fragile]{Using Variance Inflation Factors: lung data}
 
-\begin{block}{Variance Inflation Factors can help diagnose variables that are highly related.}
+\begin{block}{VIFs find variables that are highly related.}
 
 The VIF for the $k^{th}$ predictor in your model is
 $$ VIF_k = \frac{1}{1-R^2_k} $$
@@ -368,10 +367,9 @@ Different answers to these questions will yield different final models.
 
 
 \bi
-    \myitem If we are asking which is the ``true" model, we will have a bad time
-	\myitem In practice, issues with sample size, collinearity, and available predictors are real problems
-	\myitem It is often possible to differentiate between better models and less-good models, though
-	\myitem The key decisions in model selection almost always involve balancing model complexity with the potential for overfitting.
+	\myitem In practice, issues with sample size, collinearity, and available predictors are real problems.
+	\myitem There is not a single best algorithm for model selection! It pretty much always requires thoughful reasoning and knowledge about the data at hand. 
+	\myitem When in doubt (unless you are specifically ``data mining''), err on the side creating a process that does not require choices being made (by you or the computer) about which covariates to include.
 \ei
 \end{frame}
 
@@ -386,7 +384,7 @@ Different answers to these questions will yield different final models.
         \myitem Include covariates that your colleagues/reviewers/collaborators will demand be included for face validity.
         \myitem Do NOT go on a fishing expedition for significant results!
         \myitem Do NOT use ``stepwise selection'' methods!
-        \myitem Subject the selected model to model checking/diagnostics, possibly adjust model structure as needed.
+        \myitem Subject the selected model to model checking/diagnostics, possibly adjust model structure (i.e. include non-linear relationships with covariates) as needed.
 \ei
 \end{block}
 
@@ -413,7 +411,6 @@ Different answers to these questions will yield different final models.
 \begin{frame}{Today's big ideas}
 
 \bi
-    \myitem least squares estimation
     \myitem dangers of collinearity and non-identifiability
     \myitem model selection
 \ei
@@ -424,7 +421,7 @@ Different answers to these questions will yield different final models.
 
 \begin{frame}[fragile]{Lab}
 
-Analyze the NHANES dataset. Create a model with the outcome variable of cholesterol ({\tt chol}) that estimates relationships with other variables in the dataset.
+Analyze the NHANES dataset. Create a parsimonious model with the outcome variable of cholesterol ({\tt chol}) that estimates relationships with other variables in the dataset. Justify your choices of which covariates you included using some basic knowledge about what factors might impact cholesterol levels.
 
 <<nhanes, warning=FALSE, eval=FALSE>>=
 library(NHANES)
