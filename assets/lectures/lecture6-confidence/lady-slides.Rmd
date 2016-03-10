@@ -1,0 +1,102 @@
+---
+title: 'Uncertainty and Confidence'
+subtitle: 'two sides of the same coin'
+author: "Nicholas G Reich"
+date: "March 2016"
+output: ioslides_presentation
+---
+
+## 
+This exercise has been adapted from materials from the [mosaic package](https://github.com/ProjectMOSAIC/mosaic), and is released under the  GPL (>=2) license.
+
+
+## A story: The Lady Tasting Tea
+
+   * In this apochryphal story, an aristocratic British Lady claims she can tell whether milk
+   has been poured into tea or vice versa. This story was first documented by Ronald Fisher in 1935. More details [here](https://en.wikipedia.org/wiki/Lady_tasting_tea).
+   
+   * Question: How do we test this claim?
+   
+```{r echo=FALSE, message=FALSE, warning=FALSE }
+require(mosaic)
+trellis.par.set(theme=col.mosaic())
+require(knitr)
+opts_chunk$set(size='small', cache=FALSE, message=FALSE, warning=FALSE)
+options(width=90)
+set.seed(12345)
+```
+
+## Let's turn the Lady into a computer
+
+For the moment, we could think of each guess by the Lady as a flip of a coin. Then, we can use `rflip()` to simulate flipping coins:
+```{r}
+library(mosaic)
+rflip()
+```
+
+## Let's have the Lady try 10 cups of tea
+Rather than flip each coin separately, we can flip multiple coins at once. `rflip(10)` simulates 1 lady tasting 10 cups 1 time.
+
+```{r} 
+rflip(10)
+```
+
+
+## And then create a swarm of Ladies
+We can do that many times to see how multiple guessing ladies do:
+```{r}
+do(2) * rflip(10)
+```
+
+ * `do()` is a function within the `mosaic` package that is clever about what it remembers (in many common situations).
+ * 2 isn't many Ladies -- we'll do many in a minute -- but it is a good idea to take a look at a small example before generating a lot of random data.
+ * What kind of R object does the command `do(2) * rflip(10)` return?
+
+## Repeating our experiment...
+
+Now let's simulate 5000 guessing ladies
+
+```{r ladies5000}
+Ladies <- do(5000) * rflip(10)
+head(Ladies, 5)
+````
+
+## The results of our experiment...
+
+
+```{r ladies5000-plot}
+histogram( ~ heads, data=Ladies, width=1 )
+```
+
+## Some questions...
+In the context of the Lady Tasting Tea, you just ran a simulation about a hypothetical universe in which many Ladies were tasting tea and guessing about the order in which milk was added.
+
+## Some questions (con't)
+**Q.**  What type of probability distribution can we use to describe this setting?
+
+## Some questions (con't)
+**Q.** What assumptions are we making about the Ladies and their ability to detect the order of milk and tea? In other words, what are the parameters of the distribution that we are using?
+
+## Some questions (con't)
+**Q.** What proportion of your Ladies Tasting Tea guessed 9 or 10? (Note that this is the same as asking that, assuming we are flipping a fair coin, how often do we see 9 or 10 heads?) 
+
+## Some questions (con't)
+**Q.** Rumor has it that the original Lady (described by Fisher) correctly guessed all 10 cups of tea. What can our simulation tell us about how well the original Lady's skill could be described by the parameters we chose above?
+
+**Q.** Or, asked another way, what is our best guess about what the probability is that the original Lady can guess the order of milk/tea in a cup of tea right? How much uncertainty do you have in your estimate about our best guess?
+
+## Some questions (con't)
+**Q.** Thinking about this from the perspective of wanting to test hypotheses, what is a reasonable null hypothesis that we would like to test about the Lady Tasting Tea? What combination of n (number of cups) and X (number of cups she got right) would convince you that she is "better" than the average lady and guessing the order of milk/tea?
+
+[This app](http://shiny.stat.calpoly.edu/MLE_Binomial/) might help you answer this question.
+
+## A general approach 
+
+We can use randomization to assess our confidence in some knowledge gleaned from data. The Lady Tasting Tea illustrates a 3-step process that can be reused in many situations:
+
+ 1. Calculate your metric for your data
+ 2. Calculate your metric for one set of  "random" data
+ 3. Calculate your metric for many sets of "random" data
+ 4. Compare the results from 1 and 3. Does randomness accurately describe the relationship calculated with your original data?
+ 
+
