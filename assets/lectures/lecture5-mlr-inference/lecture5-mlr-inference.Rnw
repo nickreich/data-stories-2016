@@ -1,0 +1,437 @@
+%% beamer/knitr slides 
+%% for Statistical Modeling and Data Visualization course @ UMass
+%% Nicholas Reich: nick [at] schoolph.umass.edu
+
+
+\documentclass[table]{beamer}
+
+
+\input{../../slide-includes/standard-knitr-beamer-preamble}
+
+%        The following variables are assumed by the standard preamble:
+%        Global variable containing module name:
+
+\title{Multiple Linear Regression: \\ collinearity, model selection}
+%	Global variable containing module shortname:
+%		(Currently unused, may be used in future.)
+\newcommand{\ModuleShortname}{multRegression}
+%	Global variable containing author name:
+\author{Nicholas G Reich, Jeff Goldsmith}
+%	Global variable containing text of license terms:
+\newcommand{\LicenseText}{Made available under the Creative Commons Attribution-ShareAlike 3.0 Unported License: http://creativecommons.org/licenses/by-sa/3.0/deed.en\textunderscore US }
+%	Instructor: optional, can leave blank.
+%		Recommended format: {Instructor: Jane Doe}
+\newcommand{\Instructor}{}
+%	Course: optional, can leave blank.
+%		Recommended format: {Course: Biostatistics 101}
+\newcommand{\Course}{}
+
+
+\input{../../slide-includes/shortcuts}
+\usepackage{bbm}
+
+\hypersetup{colorlinks,linkcolor=,urlcolor=MainColor}
+
+
+%	******	Document body begins here	**********************
+
+\begin{document}
+
+%	Title page
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+%	******	Everything through the above line must be placed at
+%		the top of any TeX file using the statsTeachR standard
+%		beamer preamble. 
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}{Today's topics}
+
+
+<<loadData, echo=FALSE>>=
+library(ggplot2)
+theme_set(theme_bw())
+opts_chunk$set(size = 'footnotesize', message=FALSE)
+options(width=60)
+@
+
+\bi
+    \myitem collinearity and non-identifiability
+    \myitem categorical predictors
+\ei
+
+{\bf Example:} predicting respiratory disease severity (``lung'' dataset)
+
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Multiple linear regression model}
+
+\bi
+	\myitem Observe data $(y, x_{1}, \ldots, x_{p})$. Want to estimate $\beta_0, \beta_1, \ldots, \beta_p$ in the model
+	$$ \hat y = \beta_0 + \beta_1x_{1} + \ldots + \beta_px_{p}$$
+	
+\ei
+
+\begin{block}{Assumptions}
+\bi
+	\myitem Residuals have mean zero, constant variance, are independent.
+	\myitem Model is true.
+\ei
+\end{block}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Least squares}
+
+As in simple linear regression, we want to find the $\bbeta$ that minimizes the residual sum of squares.
+$$RSS(\bbeta) = \sum_i \epsilon_i ^2 = \sum_i (\hat y_i - y)^2$$
+\vskip2em
+
+
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Lung Data Example}
+
+99 observations on patients who have sought treatment for the relief of respiratory disease symptoms. 
+
+<<read-in-data>>=
+dat <- read.table("lungc.txt", header=TRUE)
+dat$education <- factor(dat$education)
+@
+
+The variables are:
+\bi
+    \myitem {\tt disease} measure of disease severity (larger values indicates more serious condition).
+    \myitem {\tt education} highest grade completed
+    \myitem {\tt crowding} measure of crowding of living quarters (larger values indicate more crowding)
+    \myitem {\tt airqual} measure of air quality at place of residence (larger number indicates poorer quality)
+    \myitem {\tt nutrition} nutritional status (larger number indicates better nutrition)
+    \myitem {\tt smoking} smoking status (1 if smoker, 0 if non-smoker)
+\ei
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+
+
+<<lung-plots, tidy=FALSE, fig.height=5, fig.width=6.5, size="tiny">>=
+library(GGally)
+ggpairs(dat[c("disease", "crowding", "education", "airqual")])
+@
+
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Lung Data Example}
+
+<<lungMLR, tidy=FALSE>>=
+mlr1 <- lm(disease ~ crowding + education + airqual, data=dat)
+summary(mlr1)$coef
+@
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Least squares estimates: identifiability issues}
+
+\begin{block}{If two of your variables are identical, or simple transformations of one another, least squares won't work}
+\bi
+    \myitem This means that there will be an infinite number of mathematically equivalent least squares solutions.
+    \myitem In practice, true {\bf non-identifiability} (there really are infinite solutions) is rare.
+	\myitem Can happen if $\bX$ is not of full rank, i.e. the columns of $\bX$ are linearly dependent (for example, including weight in Kg and lb as predictors)
+	\myitem Can happen if there are fewer data points than terms in $\bX$: $n < p$ (having 100 predictors and only 50 observations)
+    \myitem More common, and perhaps more dangerous, is {\bf collinearity}.
+\ei
+\end{block}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Infinite solutions}
+
+Suppose I fit a model $y_i = \beta_0 + \beta_1 x_{i1} + \epsilon_i$.
+\bi
+	\myitem I have estimates $\hat{\beta}_0 = 1, \hat{\beta}_1= 2$
+	\myitem I put in a new variable $x_2 = x_1$
+	\myitem My new model is $y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \epsilon_i$
+	\myitem Possible least squares estimates that are equivalent to my first model:
+	\bi
+		\item $\hat{\beta}_0 = 1, \hat{\beta}_1= 2, \hat{\beta}_2 = 0$
+		\item $\hat{\beta}_0 = 1, \hat{\beta}_1= 0, \hat{\beta}_2 = 2$
+		\item $\hat{\beta}_0 = 1, \hat{\beta}_1= 1002, \hat{\beta}_2 = -1000$
+		\item $\ldots$
+	\ei
+\ei
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Non-identifiability example: lung data}
+
+<<lungMLRNonIdent, tidy=FALSE>>=
+mlr3 <- lm(disease ~ airqual, data=dat)
+summary(mlr3)$coef
+dat$x2 <- dat$airqual/100
+mlr4 <- lm(disease ~ airqual + x2, data=dat)
+summary(mlr4)$coef
+@
+ 
+ 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Non-identifiablity: causes and solutions}
+
+\bi
+	\myitem Often due to data coding errors (variable duplication, scale changes)
+	\myitem Pretty easy to detect and resolve
+	\myitem Can be addressed using {\it penalties} (might come up much later)
+	\myitem A bigger problem is near-unidentifiability (collinearity)
+\ei
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Diagnosing collinearity}
+
+\bi
+	\myitem Arises when variables are highly correlated, but not exact duplicates
+	\myitem Commonly arises in data (perfect correlation is usually there by mistake)
+	\myitem Might exist between several variables, i.e. a linear combination of several variables exists in the data
+	\myitem A variety of tools exist (correlation analyses, multiple $R^2$, eigen decompositions)
+\ei
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Effects of collinearity}
+
+Suppose I fit a model $y_i = \beta_0 + \beta_1 x_{i1} + \epsilon_i$.
+\bi
+	\myitem I have estimates $\hat{\beta}_0 = 1, \hat{\beta}_1= 2$
+	\myitem I put in a new variable $x_2 = x_1 + error$, where $error$ is pretty small
+	\myitem My new model is $y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \epsilon_i$
+	\myitem Possible least squares estimates that are nearly equivalent to my first model:
+	\bi
+		\item $\hat{\beta}_0 = 1, \hat{\beta}_1= 2, \hat{\beta}_2 = 0$
+		\item $\hat{\beta}_0 = 1, \hat{\beta}_1= 0, \hat{\beta}_2 = 2$
+		\item $\hat{\beta}_0 = 1, \hat{\beta}_1= 1002, \hat{\beta}_2 = -1000$
+		\item $\ldots$
+	\ei
+	\myitem A unique solution exists, but it is hard to find
+\ei
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Effects of collinearity}
+
+\bi
+	\myitem Collinearity results in a ``flat" RSS
+	\myitem Makes identifying a unique solution difficult
+	\myitem Dramatically inflates the variance of LSEs
+\ei
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Collinearity example: lung data}
+
+<<lungMLRCollinearity, tidy=FALSE>>=
+dat$crowd2 <- dat$crowding + rnorm(nrow(dat), sd=.1)
+mlr5 <- lm(disease ~ crowding + airqual, data=dat)
+summary(mlr5)$coef
+mlr6 <- lm(disease ~ crowding + crowd2 + airqual, data=dat)
+summary(mlr6)$coef
+@
+ 
+ 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Using Variance Inflation Factors: lung data}
+
+\begin{block}{VIFs find variables that are highly related.}
+
+The VIF for the $k^{th}$ predictor in your model is
+$$ VIF_k = \frac{1}{1-R^2_k} $$
+where $R^2_k$ is the $R^2$ from the model with $X_k$ as the response and all other $X$ variables as the predictors.
+
+<<lungMLRVIF, tidy=FALSE>>=
+car::vif(mlr5)
+car::vif(mlr6)
+@
+
+Rule of thumb is that if any $VIF_k$ > 10, then you should be concerned about collinearity.
+
+\end{block}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Some take away messages}
+
+\bi
+    \myitem Collinearity can (and does) happen, so be careful
+	\myitem Often contributes to the problem of variable selection, which we'll touch on later
+\ei
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}{Model selection}
+
+\begin{block}{Why are you building a model in the first place?}
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Model selection: considerations}
+
+\begin{block}{Things to keep in mind...}
+\bi
+    \myitem {\bf Why am I building a model?} Some common answers
+    \bi
+        	\item Estimate an association
+		\item Test a particular hypothesis
+		\item Predict new values
+	\ei
+	\myitem What predictors will I allow?
+    \myitem What predictors are needed?
+\ei
+
+Different answers to these questions will yield different final models.
+
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Model selection: realities}
+
+\centering {\em All models are wrong. Some are more useful than others.} \\ - George Box
+
+
+\bi
+	\myitem In practice, issues with sample size, collinearity, and available predictors are real problems.
+	\myitem There is not a single best algorithm for model selection! It pretty much always requires thoughful reasoning and knowledge about the data at hand. 
+	\myitem When in doubt (unless you are specifically ``data mining''), err on the side creating a process that does not require choices being made (by you or the computer) about which covariates to include.
+\ei
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Basic ideas for model selection}
+
+\begin{block}{For association studies, when your sample size is large}
+\bi
+        \myitem Include key covariates of interest.
+        \myitem Include covariates needed because they might be confounders.
+        \myitem Include covariates that your colleagues/reviewers/collaborators will demand be included for face validity.
+        \myitem Do NOT go on a fishing expedition for significant results!
+        \myitem Do NOT use ``stepwise selection'' methods!
+        \myitem Subject the selected model to model checking/diagnostics, possibly adjust model structure (i.e. include non-linear relationships with covariates) as needed.
+\ei
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Basic ideas for model selection}
+
+\begin{block}{For association studies, when your sample size is small}
+\bi
+        \myitem Same as above, but may need to be more frugal with how many predictors you include.
+        \myitem Rule of thumb for multiple linear regression is to have at least 15 observations for each covariate you include in your model.
+\ei
+\end{block}
+
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Today's big ideas}
+
+\bi
+    \myitem dangers of collinearity and non-identifiability
+    \myitem model selection
+\ei
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Lab}
+
+Analyze the NHANES dataset. Create a parsimonious model with the outcome variable of cholesterol ({\tt chol}) that estimates relationships with other variables in the dataset. Justify your choices of which covariates you included using some basic knowledge about what factors might impact cholesterol levels.
+
+<<nhanes, warning=FALSE, eval=FALSE>>=
+library(NHANES)
+data(NHANES)
+?NHANES
+@
+
+
+\end{frame}
+
+
+
+\end{document}
