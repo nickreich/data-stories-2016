@@ -8,23 +8,23 @@ tagline:
 *This is the working schedule for the course. It is subject to change.*
 
 
-Week |       |     | Topic   | In-class resources | Reading
----- | ----- | --- | ------- | ------------------ | -------
- 1   | Jan | 19, 21  | Intro, motivation | [swirl](../assets/labs/swirl-intro.R), iPod lab [ind](../assets/labs/lab1-ipod-shuffle/lab1-ipod-shuffle-individual.html), [grp](../assets/labs/lab1-ipod-shuffle/lab1-ipod-shuffle-group.html) | Syllabus, Kaplan 1.
- 2   |     | 26, 28  &nbsp;| Data visualization | | [Data viz reading list](data-viz-reading-list.html)
- 3   | Feb | 2, 4   | Data visualization | |
- 4   |     | 9, 11 | Language of Models | [Lec 2](../assets/lectures/data-viz-NHANES/Presentation-NHANES.html) | Kaplan Ch. 6, 7
- 5   |     | 18     | Fitting Linear Models | | Kaplan Ch. 8
- 6   |     | 23, 25 | Linear Regression | [Lec 3](../assets/lectures/lecture3-slr/lec3-slr.pdf), [Lab 2](../assets/labs/lab2-slr/lab2-slr.pdf) | OpenIntro Ch. 7
- 7   | Mar | 1, 3   | Multiple Linear Regression | [Lec 4](../assets/lectures/lecture4-mlr/lec4-mlr.pdf) | OpenIntro Ch. 8
- 8   |     | 8, 10 | Multiple Linear Regression | [Lec 5](../assets/lectures/lecture5-mlr-inference/lecture5-mlr-inference.pdf) | Kaplan Ch. 11, 12 
-     |     | 15, 17 | Spring Break! | |
- 9   |     | 22, 24 | Career Fair | |
- 10  |     | 29, 31  | | |
- 11  | Apr | 5, 7   | | |
- 12  |     | 12, 14 | | |
- 13  |     | 19, 21 | | |
- 14  |     | 26     | | |
+Week |       |     | Topic   | Notes | HW Due | Reading
+---- | ----- | --- | ------- | ----- |:------:| -------
+ 1   | Jan | 19, 21  | Intro, motivation | [swirl](../assets/labs/swirl-intro.R), iPod lab [ind](../assets/labs/lab1-ipod-shuffle/lab1-ipod-shuffle-individual.html), [grp](../assets/labs/lab1-ipod-shuffle/lab1-ipod-shuffle-group.html) | | Syllabus, Kaplan 1.
+ 2   |     | 26, 28  &nbsp;| Data visualization | | |  [Data viz reading list](data-viz-reading-list.html)
+ 3   | Feb | 2, 4   | Data visualization | |  |
+ 4   |     | 9, 11 | Language of Models | [Lec 2](../assets/lectures/data-viz-NHANES/Presentation-NHANES.html) | |  Kaplan Ch. 6, 7
+ 5   |     | 18     | Fitting Linear Models | | |  Kaplan Ch. 8
+ 6   |     | 23, 25 | Linear Regression | [Lec 3](../assets/lectures/lecture3-slr/lec3-slr.pdf) | [Lab 2](../assets/labs/lab2-slr/lab2-slr.pdf) |  OpenIntro Ch. 7
+ 7   | Mar | 1, 3   | Multiple Linear Regression | [Lec 4](../assets/lectures/lecture4-mlr/lec4-mlr.pdf) | [Project 1](project1.html) | OpenIntro Ch. 8
+ 8   |     | 8, 10 | Multiple Linear Regression | [Lec 5](../assets/lectures/lecture5-mlr-inference/lecture5-mlr-inference.pdf) | [Lab 3](../assets/labs/lab3-mlr-practice/lab3-mlr-practice.pdf) |  Kaplan Ch. 11, 12 
+     |     | 15, 17 | Spring Break! | |  |
+ 9   |     | 22, 24 | Career Fair | | | 
+ 10  |     | 29, 31  | | | | 
+ 11  | Apr | 5, 7   | | | | 
+ 12  |     | 12, 14 | | | | 
+ 13  |     | 19, 21 | | | | 
+ 14  |     | 26     | | | | 
 
 
  
