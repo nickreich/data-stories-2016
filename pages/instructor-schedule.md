@@ -89,9 +89,15 @@ _Tues, week 8_
 
 _Thurs, week 8_
 
- - wits and wagers?
+ - lady tasting tea and coin-flipping!
+ 
+ _Tues, week 9_
 
+ - class cancelled
 
+ _Thurs, week 9_
+
+ - NHANES lab session
 
 _unscheduled activities_ 
 
