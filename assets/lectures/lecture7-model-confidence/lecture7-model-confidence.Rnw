@@ -358,7 +358,54 @@ for(i in 1:100) p <- p + geom_abline(slope=s100a[i,'age'],
 p + annotate("point", x=mean(r$age), y=mean(r$net), color="red")
 @
 
+\end{frame}
+
+\begin{frame}[fragile]{Making predictions}
+
+<<fig.height=3.5, warning=FALSE>>=
+head(predict(fm, interval="confidence"))
+head(predict(fm, interval="prediction"))
+@
 
 \end{frame}
+
+\begin{frame}[fragile]{Making predictions}
+
+<<fig.height=3.5, warning=FALSE>>=
+predict(fm, newdata = data.frame(age=c(20, 50, 60),
+                                 sex=c("M", "M", "M")), 
+        interval="prediction")
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Prediction vs. confidence interval, race data}
+
+<<fig.height=4, echo=FALSE, message=FALSE, warning=FALSE>>=
+fm1 <- lm(net~age, data=race)
+racep <-  cbind(race, predict(fm1, interval="prediction"))
+ggplot(racep, aes(x=age, y=net)) +
+    geom_ribbon(aes(ymin=lwr, ymax=upr, fill='prediction'), alpha=0.3) +
+    geom_point() +
+    geom_smooth(method="lm", aes(fill='confidence'),alpha=0.8) +
+    geom_smooth(method="lm", se=FALSE, color='blue') +
+    scale_fill_manual('Interval', values = c('red', 'darkgray')) 
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Today's key topics}
+
+\bi
+    \myitem Sampling distributions
+    \myitem Standard error
+    \myitem Confidence errors and intervals for coefficients
+    \myitem Prediction intervals for future observations
+\ei
+
+\end{frame}
+
+
 
 \end{document}
