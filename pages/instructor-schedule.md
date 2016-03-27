@@ -97,7 +97,7 @@ _Thurs, week 8_
 
  _Thurs, week 9_
 
- - NHANES lab session
+ - FEV lab 4 session (interaction, residual plots)
 
 _unscheduled activities_ 
 
