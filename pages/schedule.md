@@ -19,12 +19,12 @@ Week |       |     | Topic   | Notes | HW Due | Reading
  7   | Mar | 1, 3   | Multiple Linear Regression | [Lec 4](../assets/lectures/lecture4-mlr/lec4-mlr.pdf) | [Project 1](project1.html) | OpenIntro Ch. 8
  8   |     | 8, 10 | Multiple Linear Regression | [Lec 5](../assets/lectures/lecture5-mlr-inference/lecture5-mlr-inference.pdf) | [Lab 3](../assets/labs/lab3-mlr-practice/lab3-mlr-practice.pdf) |  Kaplan Ch. 11, 12 
      |     | 15, 17 | Spring Break! | |  |
- 9   |     | 22, 24 | Career Fair | [Lab 4](../assets/labs/lab4-fev/lab4-fev.pdf) | | 
- 10  |     | 29, 31  | | | [Lab 4](../assets/labs/lab4-fev/lab4-fev.pdf) | 
- 11  | Apr | 5, 7   | | | | 
- 12  |     | 12, 14 | | | | 
- 13  |     | 19, 21 | | | | 
- 14  |     | 26     | | | | 
+ 9   |     | 22, 24 | Career Fair, MLR | [Lab 4](../assets/labs/lab4-fev/lab4-fev.pdf) | | 
+ 10  |     | 29, 31 | Hypothesis testing | | [Lab 4](../assets/labs/lab4-fev/lab4-fev.pdf) | Kaplan Ch. 11-13
+ 11  | Apr | 5, 7   | Logistic regression | | | 
+ 12  |     | 12, 14 | Poisson regression | | | 
+ 13  |     | 19, 21 | Missing data | | | 
+ 14  |     | 26     | Final projects | | | 
 
 
  
