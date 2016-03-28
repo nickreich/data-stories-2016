@@ -211,6 +211,7 @@ ggplot(s, aes(x=age, y=sexM)) +
 \bi
     \myitem {\bf sampling distribution}: the distribution of an estimated parameter, reflecting the randomness of the sampling (data collection) process. 
     \myitem {\bf standard error}: the standard deviation of a sampling distribution, measures the precision of our estimate or the amount of information we have about the parameter.
+    \myitem {\bf margin of error}: the half-width of the confidence interval 
     \myitem {\bf point estimate}: the exact numerical value that represents our best guess at the true parameter value. (In regression, this is the least-squares estimate of our $\beta$.)
 \ei
 
