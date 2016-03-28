@@ -4,7 +4,7 @@ title: Project Description
 ---
 
 #### Project Assignment
-For the project you will create, in small groups, a thorough analysis of a particular dataset. The analysis project will have components completed by the group and by each individual student. Each group will prepare a formal written report and will present their project to the class in a ~30-minute presentation. In this presentation, each group member will have 5 minutes to present his/her topic. Additionally, each group will create a 1 page handout (two-sided, if desired) to accompany the group presentation. The handout provides an opportunity to summarize key findings, show central figures, and/or provide greater detail or explanation about pieces of the project.
+For the project you will create, in small groups, a thorough analysis of a particular dataset. For each dataset, the goal is to tell an interesting story about the dataset. The analysis project will have components completed by the group and by each individual student. Each group will prepare a formal written report and will present their project to the class in a 15-20 minute presentation. In this presentation, each group member will have 2-3 minutes to present his/her topic. Additionally, each group will create a 1 page handout (two-sided, if desired) to accompany the group presentation. The handout provides an opportunity to summarize key findings, show central figures, and/or provide greater detail or explanation about pieces of the project.
 
 Each group will be expected to hand in the following items
 
@@ -13,50 +13,39 @@ Each group will be expected to hand in the following items
 3. a PDF file containing the presentation handout, and
 4. a single paper copy of the presentation handout.
 
-Choice of a good dataset will be particularly important. Each group should consider multiple datasets as possibilities and will need to have their final choice approved by the instructor.
+The instructor will pick teams and assign each team a particular dataset.
 
 #### Guidelines for the project write-up
 
-Overall, the project write-up should be written in clear, concise prose, suitable for publication in a scientific journal. No code should be shown in the write-up, although it is expected that results provided in the write-up will be dynamically generated (i.e. if you report the results from a regression, you are calling the results directly from R and not inputting the numbers directly into the .Rmd file). You will need to be very judicious in your choices of what to include in the write-up, only leaving the items most central to the write-up's overall goals and theses. The topics chosen by individual group members should complement each other, i.e. there should be no major topic overlap, not everyone should do a power simulation, etc... 
+As a team, the group should assemble an outline of the key elements of the story and which team member will be responsible for each element. The general idea is that each element focuses on one key observation or insight about the dataset. A complete story will have a small number of elements. Ideally, each each teammate has one any only one. The elements should complement each other and together tell a coherent story about your dataset. At least one element (and preferably more) must include a regression model.
+
+Overall, the project write-up should be written in clear, concise prose, suitable for publication in a scientific journal. No code should be shown in the write-up, although it is expected that results provided in the write-up will be dynamically generated (i.e. if you report the results from a regression, you are calling the results directly from R and not inputting the numbers directly into the .Rmd file). You will need to be very judicious in your choices of what to include in the write-up, only leaving the items most central to the write-up's overall goals and storyline. 
 
 Please follow the structure and page limits given below:
 
 * cover page (title, names, table of contents): 1 page
 * group data analysis (including tables/figures): 2 pages
-* each individual data analysis (including tables/figures): 3 pages
+* each individual data analysis (including tables/figures): 2 pages
 * conclusion/discussion: 1 page
 
 No page-cramming: i.e. nothing smaller than 11-point font, no less than 1 inch margins all around.
 
 _Group Data Analysis_
 
-The group-written data analysis will provide a brief summary of key features of the dataset. You should define and summarize each variable that will be used, either in a table or graphically, or both. Any central hypotheses or relationships that will be tested or explored should be defined here. At least a few sentences of context and description of the dataset should be included. This section should include a few tables and/or figures and should be no more than two pages long. Description of how missing data was handled should be included here (see more detail below).
+The group-written data analysis will provide a brief summary of key features of the dataset. You should define and summarize each variable that will be used, either in a table or graphically, or both. Any central hypotheses or relationships that will be tested or explored should be defined here. At least a few sentences of context and description of the dataset should be included. This section should include a few tables and/or figures and should be no more than two pages long. Description of how missing data was handled (if you have any) should be included here (see more detail below).
 
 _Individual Data analyses_
 
-Additionally, each member of the group will lead a particular thread of analysis and/or dataset exploration that expands on a topic that we have covered in class, or on a new topic entirely. The write-up for each individual data analysis should not exceed three pages, including tables and figures. 
+Each member of the group will lead a particular thread of analysis and/or dataset exploration that helps tell a story about the assigned dataset.  The write-up for each individual data analysis should not exceed two pages, including tables and figures. The individual write-ups should be focused on a key element of, relationship within, or insight about the dataset. 
 
-For this independent data analysis portion of the project, the two major paths that you can take are 
+Examples of elements are:
 
-1. to fit a specialized model to the data (i.e. not just MLR with main effect covariates) and interpret the output from the methods that you have used. Examples here include regression trees, incorporating natural splines into an MLR model, or a mixed-effects model.
-2. to create a simulation study to determine how much power a particular type of analysis has to detect a hypothetical association between variables in your dataset. 
-  - For example, you could use a covariate resampling approach (to be described in class) to simulate new versions of your dataset that retain the covariate correlation structures present in your data, simulate new outcomes with known association(s), and fit a model to try and identify those association(s). This could be particularly compelling if you worked with a teammate who ran an analysis using one particular method and you calculated the power for their analytic method. 
-  - As another example, you could run a simulation that tries to replicate the results of previous studies that show the pitfalls of backwards or forwards selection. You could design a simulation to evaluate the effectiveness of forward and/or backward selection methods for identifying associated predictor variables.
-
-Examples of topics
-
-* regression trees
-* natural or B-splines
-* non-linear regression
-* mixed/random effects models
-* a comparison and exploration of model-selection methods, e.g. using different criteria (PRESS, Mallow's Cp, AIC, BIC, adjusted R^2), or stepwise-selection methods
-* ... or any other slightly more advanced model-fitting method (please feel free to choose something that you are interested in learning more about, but not something that you have already done) 
+1. identifying and describing, using appropriate analytical tools (e.g. a regression model) to descibe relationships important variables in your dataset. This might include fitting a regression model and interpreting the output, with particular attention paid to a relationship that you know scientifically to be a question of interest.
+2. showing, using an in-depth or sequence of data visualizations, an important feature of relationship within your dataset.
+3. creating and evaluating predictions from your model.
+4. fitting and describing key features of this a regression model, such as discussing the possible influence of outlying points, missing data, non-linear relationships, etc... 
 
 The data analysis write-up will contain a section for each group member's analysis and a conclusion that summarizes the results. 
-
-_Missing Data_
-
-Many datasets will have missing data in them. Your group will be expected to come up with an justifiable approach for dealing with any missingness in the data (i.e. multiple imputation, sensitivity analyses). Within a group, the approaches taken to deal with missing data should be consistent.
 
 #### Project grading
 Your project grade makes up 40% of your final grade for the class and will be calculated as follows:
@@ -76,13 +65,8 @@ As an example: Your group receives 40/50 points for the "final product produced 
 
 
 #### Deadlines
-TBD.
-
-<!-- 
-* Fri Mar 27: Groups propose a dataset
-* Fri Apr 3: Individual topics proposed (1 paragraph summary, submitted to instructor on Google Drive)
-* Mon Apr 13: Draft of group data description write-up due, 5pm
-* Mon Apr 20: Draft of individual data analysis due, 5pm
-* Thu Apr 23: Group 1 (and Group 2?) present, project handed in on Fri 4/24 by 5pm
-* Tue Apr 28: Group 3 (and Group 2?) presents, project handed in on Wed 4/29 by 5pm
--->
+* Wed Apr 6: Group ouline and individual topics proposed (1 paragraph summary, submitted to instructor on Google Drive)
+* Wed Apr 13: Draft of group data description write-up due, 5pm
+* Mon Apr 18: Draft of individual data analysis due, 5pm
+* Thu Apr 21: Group 1 (and Group 2?) present, project handed in on Wed 4/27 by 5pm
+* Tue Apr 26: Group 3 (and Group 2?) presents, project handed in on Wed 4/27 by 5pm

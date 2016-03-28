@@ -93,11 +93,18 @@ _Thurs, week 8_
  
  _Tues, week 9_
 
- - class cancelled
+ - class cancelled, SPHHS career fair
 
  _Thurs, week 9_
 
  - FEV lab 4 session (interaction, residual plots)
+
+ _Tues, week 10_
+
+ - lecture 7: confidence in models 
+
+
+
 
 _unscheduled activities_ 
 
