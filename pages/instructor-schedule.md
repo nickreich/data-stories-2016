@@ -103,13 +103,9 @@ _Thurs, week 8_
 
  - lecture 7: confidence in models 
 
-
-
-
 _unscheduled activities_ 
 
  - group presentations about [blog post]( http://simplystatistics.org/2016/02/01/a-menagerie-of-messed-up-data-analyses-and-how-to-avoid-them/)
- - coin-flipping?
 
 
 <!--
