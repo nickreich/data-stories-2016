@@ -103,6 +103,12 @@ _Thurs, week 8_
 
  - lecture 7: confidence in models 
 
+ _Tues, week 10_
+
+ - reminder/checkins: handing in assignments via google drive, M/W schedule
+ - quiz: http://goo.gl/forms/gdhn9mxwBG
+ - lab 5: hypothesis testing
+
 _unscheduled activities_ 
 
  - group presentations about [blog post]( http://simplystatistics.org/2016/02/01/a-menagerie-of-messed-up-data-analyses-and-how-to-avoid-them/)
