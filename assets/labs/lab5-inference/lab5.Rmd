@@ -1,0 +1,76 @@
+---
+title: "Lab 5: Hypothesis testing in linear regression models"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Introduction to Hypothesis Testing
+
+A central question in regression analysis is ``How can we formally evaluate statistical evidence about associations between the observed variables, while controlling for the presence of other factors?''
+
+One important method to evaluating evidence is using confidence intervals. This approach allows us to give an interval of possible values (often centered on our ``best guess'' of a parameter) that we think is likely to cover the true value. However, another common approach used to assess models is to use hypothesis testing. Hypothesis testing is described in nice intuitive detail in Kaplan, Chapters 13-15, and this lab will highlight some of the key points covered in those chapters.
+
+Hypothesis testing relies on a certain logic that enables us to weigh evidence present in our dataset. In particular, we end up calculating p-values, which represent the probability of observing the data that we did observe, given that a particular hypothesis (our null hypothesis, or $H_0$) is true. Oftentimes, statistical theory can gives us tidy results that help us determine what the world would look like if $H_0$ were true. Othertimes, we might need to rely on our intuition and computation to show us what the $H_0$ version of the world would look like.
+
+Let's start with a simple example, using the computational version of hypothesis testing.
+
+## 
+Let's use the Cherry Blossom race data again and look again at the relationship betwen the net time variable with the age and sex variables. To start, let's load the variables into our current R session. To begin, if you haven't installed the `devtools` or `fetch` package, you will need to with these commands
+
+```{r}
+install.packages("devtools")
+devtools::install_github("ProjectMOSAIC/fetch")
+```
+
+Then, we can load the race data:
+```{r}
+race <- fetch::fetchData("ten-mile-race.csv")
+```
+
+Then, to make our subsequent analyses a bit more interesting, let's reduce the size of the dataset a bit by picking 500 runners at random. 
+```{r}
+set.seed(1234)
+rows_to_keep <- sample(1:nrow(race), size=200)
+race_small <- race[rows_to_keep,]
+```
+
+
+### Exercise 1
+Create a few plots of the data to explore relationships between the variables, just to get a feel for the data. Explore, summarize, and plot the data until you feel like you have a sense of what it looks like.
+
+### Exercise 2
+Let's say that we are interested in exploring the model that uses age, sex and an interaction term between age and sex to predict the outcome. Fit this model. Interpret the coefficients, for now, don't give a confidence interval or interpret our uncertainty.
+```{r, echo=FALSE}
+fm <- lm(net~age*sex, data=race_small)
+```
+
+
+### Exercise 3
+We are interested in testing a hypothesis about whether age is associated with net time. One way to address this question is to set up a hypothetical world where we know that age does not have an association with net time. One way to achieve this is to randomly shuffle or permute the values of the covariate. By randomly shuffling these values, we are breaking any association that might exist. Test out this shuffling method and see for yourself what the data looks like when we assign a random value of age from our dataset to each net time. 
+
+```{r}
+library(mosaic)
+qplot(age, net, data=race_small) + geom_smooth()
+qplot(shuffle(age), net, data=race_small) + geom_smooth()
+```
+
+## Exercise 4
+We know that by "shuffling" the ages, we can create single datasets that represent a reality where age and net time are not related. But this is a noisy process, and each dataset will look different. Use the `shuffle()` function and the `do()` syntax from Lecture 7 to run a simulation where you fit a set of regression models from Exercise 2 where the age has been shuffled. Try `do`ing this for different numbers of times. Pick a number of repetitions ($N$) that is big enough so that when you repeat the experiment the results don't appreciably change, but that runs pretty quickly overall. Hint: by "results don't change" you could think about plotting the estimates of one of the coefficients.  
+
+```{r, echo=FALSE}
+s <- do(1000) * lm(net~shuffle(age)*sex, data=race_small)
+ggplot(s) + geom_density(aes(age.))
+sum(abs(s$age.)>=coef(fm)["age"])
+```
+
+## Exercise 5
+In the last exercise you created what we could call a "null distribution" of coefficient estimates. This means that you created a distribution of what the coefficients might have looked like if the null hypothesis, i.e. that $\beta_age=0$, were true. Plot this distribution and compare it to the value of the coefficient from when you fit the model to the original data. What fraction of the null distribution estimates were further from zero (in absolute value) than the fitted coefficient from the original dataset? That number has a name! It's a p-value from what is called a permutation test, which is a computational way to perform a hypothesis test. 
+
+
+### Extra credit
+Create a new binary variable that encodes each runner as being from the USA or not, based on the state variable. Present a few plots showing the relationship of this variable with the others we have looked at. Fit an appropriate regression model to test whether being from the USA is a significant predictor of finishing time. Describe your results by summarizing in a few sentences, including a confidence interval.
+
