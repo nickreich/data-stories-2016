@@ -27,8 +27,8 @@ getHdata(FEV)
 ```
 
 ### Exercise 1
-Let's say that we are interested in exploring the model that uses age, smoke and height to predict the outcome. Fit this model. Interpret the coefficients. For now, don't give a confidence interval or interpret our uncertainty.
-```{r, echo=FALSE, eval=TRUE}
+Let's say that we are interested in exploring the model that uses age, smoke, height and sex to predict the outcome. Fit this model. Interpret the coefficients. For now, don't give a confidence interval or interpret our uncertainty.
+```{r, echo=TRUE, eval=TRUE}
 fm <- lm(fev ~ age + smoke + height + sex, data=FEV)
 ```
 
@@ -43,7 +43,7 @@ qplot(shuffle(smoke), fev, data=FEV) + geom_boxplot()
 ```
 
 ## Exercise 3
-We know that by "shuffling" smoking status, we can create single datasets that represent a reality where smoking is not related to any other of the variables, including fev. But this is a noisy process (remember, *data collection is where the randomness happens*), and each dataset will look different. Use the `shuffle()` function and the `do()` syntax from Lecture 7 to run a simulation where you fit a set of regression models from Exercise 2 where smoke has been shuffled. Try `do`ing this for different numbers of times. Pick a number of repetitions ($N$) that is big enough so that when you repeat the experiment the results don't appreciably change, but that runs pretty quickly overall. Hint: by "results don't change" you could think about plotting the estimates of one of the coefficients.  
+We know that by "shuffling" smoking status, we can create single datasets that represent a reality where smoking is not related to any other of the variables, including fev. But this is a noisy process (remember, *data collection is where the randomness happens*), and each dataset will look different. Use the `shuffle()` function and the `do()` syntax from Lecture 7 to run a simulation where you fit a set of regression models from Exercise 1 where smoke has been shuffled. Try `do`ing this for different numbers of times. Pick a number of repetitions ($N$) that is big enough so that when you repeat the experiment the results don't appreciably change, but that runs pretty quickly overall. Hint: by "results don't change" you could think about plotting the estimates of one of the coefficients.  
 
 ```{r, echo=FALSE}
 s <- do(100) * lm(fev ~ age + shuffle(smoke) + height + sex, data=FEV)
