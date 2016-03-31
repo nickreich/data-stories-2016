@@ -27,6 +27,7 @@ The source code and PDF files associated with the lectures will be posted below 
 * [Lab 2: Linear Regression](../assets/labs/lab2-slr/lab2-slr.pdf)
 * [Lab 3: Multiple Linear Regression](../assets/labs/lab3-mlr-practice/lab3-mlr-practice.pdf)
 * [Lab 4: Analyzing FEV data](../assets/labs/lab4-fev/lab4-fev.pdf)
+* [Lab 5: Hypothesis testing in linear regression models](../assets/labs/lab5/lab5.pdf)
 
 <!--  \|  [A](../assets/lectures/lecture1-intro-regression/lecture1-intro-regression-annotated.pdf) \]
 * Lecture 2: Simple Linear Regression and Least Squares \[  [S](../assets/lectures/lecture2-slr-basics/lecture2-slr-basics.pdf) \| [A](../assets/lectures/lecture2-slr-basics/lecture2-slr-basics-annotated.pdf)  \]

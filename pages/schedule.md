@@ -20,8 +20,8 @@ Week |       |     | Topic   | Notes | HW Due | Reading
  8   |     | 8, 10 | Multiple Linear Regression | [Lec 5](../assets/lectures/lecture5-mlr-inference/lecture5-mlr-inference.pdf) | [Lab 3](../assets/labs/lab3-mlr-practice/lab3-mlr-practice.pdf) |  Kaplan Ch. 11, 12 
      |     | 15, 17 | Spring Break! | |  |
  9   |     | 22, 24 | Career Fair, MLR | [Lec 6](../assets/lectures/lecture6-confidence/lady-slides.html) | | 
- 10  |     | 29, 31 | Hypothesis testing | [Lec 7](../assets/lectures/lecture7-model-confidence/lecture7-model-confidence.pdf) | [Lab 4](../assets/labs/lab4-fev/lab4-fev.pdf) | Kaplan Ch. 11-13
- 11  | Apr | 5, 7   | Logistic regression | | | 
+ 10  |     | 29, 31 | Hypothesis testing | [Lec 7](../assets/lectures/lecture7-model-confidence/lecture7-model-confidence.pdf) | [Lab 4](../assets/labs/lab4-fev/lab4-fev.pdf) | Kaplan Ch. 11-15
+ 11  | Apr | 5, 7   | Logistic regression | | [Lab 5](../assets/labs/lab5/lab5.pdf) | Kaplan Ch 16, _OI_ Ch 8
  12  |     | 12, 14 | Poisson regression | | | 
  13  |     | 19, 21 | Missing data | | | 
  14  |     | 26     | Final projects | | | 
