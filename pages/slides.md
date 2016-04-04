@@ -17,6 +17,7 @@ The source code and PDF files associated with the lectures will be posted below 
 * Lecture 5: Multiple Linear Regression (Confidence and Collinearity) \[ [S](../assets/lectures/lecture5-mlr-inference/lecture5-mlr-inference.pdf) \}
 * Lecture 6: Statistical confidence \[ [S](../assets/lectures/lecture6-confidence/lady-slides.html) \}
 * Lecture 7: Confidence in Regression Models \[ [S](../assets/lectures/lecture7-model-confidence/lecture7-model-confidence.pdf) \}
+* Lecture 8: Logistic Regression \[ [S](../assets/lectures/lecture8-logistic-regression/lecture8-logistic-regression.pdf) \}
 
 * Data Viz 1: Principles of Data Visualization \[  [S](../assets/lectures/data-viz-principles/data-viz-principles-and-EDA.html) \]
 * Data Viz 2: Data Visualization (ggplot2) \[  [S](../assets/lectures/data-viz-ggplot/data-viz-ggplot.html) \]
