@@ -103,11 +103,37 @@ _Thurs, week 8_
 
  - lecture 7: confidence in models 
 
- _Tues, week 10_
+ _Thurs, week 10_
 
  - reminder/checkins: handing in assignments via google drive, M/W schedule
  - quiz: http://goo.gl/forms/gdhn9mxwBG
  - lab 5: hypothesis testing
+
+ _Tues, week 11_
+
+ - lecture 8: logistic regression
+
+ _Thurs, week 11_
+
+ - project work period: instructor check-ins with each group on project topics.
+ 
+ _Tues, week 12_
+
+ - lecture 8: splines, titanic example
+
+ _Thurs, week 12_
+
+ - project work period: instructor check-ins with each group on project topics.
+ library(Hmisc)
+getHdata(titanic)
+head(titanic)
+ggplot(titanic, aes(x=age, y=survived, color=sex)) + geom_point(alpha=I(.4)) + facet_grid(.~pclass)
+ggplot(titanic, aes(x=age, y=survived, color=sex)) + geom_smooth(se=FALSE, span=1) + facet_grid(.~pclass)
+ggplot(titanic, aes(x=age, y=survived, color=sex)) + stat_smooth(se=FALSE, method='glm', method.args=list(family='binomial')) + facet_grid(.~pclass)
+ggplot(titanic, aes(x=age, y=survived, color=sex)) + stat_smooth(se=FALSE, method='glm', method.args=list(family='binomial')) + facet_grid(embarked~pclass)
+ggplot(titanic, aes(x=pclass, y=boat)) + geom_raster(aes(fill=survived))
+ 
+
 
 _unscheduled activities_ 
 
