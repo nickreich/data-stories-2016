@@ -120,6 +120,7 @@ _Thurs, week 8_
  _Tues, week 12_
 
  - lecture 8: splines, titanic example
+ - compare to : http://www.nytimes.com/interactive/2016/04/11/upshot/for-the-poor-geography-is-life-and-death.html
 
  _Thurs, week 12_
 
