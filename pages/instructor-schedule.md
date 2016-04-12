@@ -123,16 +123,6 @@ _Thurs, week 8_
 
  _Thurs, week 12_
 
- - project work period: instructor check-ins with each group on project topics.
- library(Hmisc)
-getHdata(titanic)
-head(titanic)
-ggplot(titanic, aes(x=age, y=survived, color=sex)) + geom_point(alpha=I(.4)) + facet_grid(.~pclass)
-ggplot(titanic, aes(x=age, y=survived, color=sex)) + geom_smooth(se=FALSE, span=1) + facet_grid(.~pclass)
-ggplot(titanic, aes(x=age, y=survived, color=sex)) + stat_smooth(se=FALSE, method='glm', method.args=list(family='binomial')) + facet_grid(.~pclass)
-ggplot(titanic, aes(x=age, y=survived, color=sex)) + stat_smooth(se=FALSE, method='glm', method.args=list(family='binomial')) + facet_grid(embarked~pclass)
-ggplot(titanic, aes(x=pclass, y=boat)) + geom_raster(aes(fill=survived))
- 
 
 
 _unscheduled activities_ 
