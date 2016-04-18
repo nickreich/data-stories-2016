@@ -124,6 +124,24 @@ _Thurs, week 8_
 
  _Thurs, week 12_
 
+ - class cancelled
+ 
+ _Tues week 13_
+ 
+  - logistic regression quiz
+  - mini presentations on titanic lab
+  - missing data slides
+  
+_Thurs week 13_
+
+ - missing data lab
+ - course evaluations
+ 
+_tues week 14_
+
+ - 3 group presentations
+ 
+
 
 
 _unscheduled activities_ 
