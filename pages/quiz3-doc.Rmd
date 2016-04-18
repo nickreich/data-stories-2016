@@ -1,0 +1,63 @@
+---
+title: "Quiz: Logistic Regression"
+author: "Nicholas Reich, adapted from Project MOSAIC"
+date: "February 14, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The quiz is available at this link [xxx](xxx).
+
+## Overview
+
+We will load the data set that documents the data collected on the challenger JAMA-HR.csv which contains data from a report in the Journal of the American Medical Association.
+
+Each case is an individual person. The variables are 
+
+ - Temp: body temperature in degrees F 
+ - HR: heart rate in beats per minute
+ - Sex: coded as F and M
+
+Here are some initial commands to load and look at the dataset: 
+```{r, message=FALSE}
+library(pander)
+oring = fetch::fetchData("oring-damage.csv")
+pander(head(oring))
+K <- 60
+mod = glm(damage ~ I(temp-K), data = oring, family = "binomial")
+pander(round(summary(mod)$coef),2)
+round(exp(coef(mod)),2)
+```
+
+```{r}
+library(ggplot2)
+cm <- coef(mod)
+dat <- dplyr::data_frame(x = 30:90,
+                  y1 = boot::inv.logit(cm[1] + (x-K)*cm[2]),
+                  y2 = boot::inv.logit(cm[1] + (x-K)*-cm[2]),
+                  y3 = boot::inv.logit(cm[1] + (x-45)*cm[2]))
+p1 <- ggplot(dat, aes(x)) +
+    stat_smooth(aes(y=y1), se=FALSE, method='glm', method.args=list(family='binomial')) + ylab("prob. of damage") + xlab("temp.")
+p2 <- ggplot(dat, aes(x)) +
+    stat_smooth(aes(y=y2), se=FALSE, method='glm', method.args=list(family='binomial')) + ylab("prob. of damage") + xlab("temp.")
+p3 <- ggplot(dat, aes(x)) +
+    stat_smooth(aes(y=y3), se=FALSE, method='glm', method.args=list(family='binomial')) + ylab("prob. of damage") + xlab("temp.")
+gridExtra::grid.arrange(p1, p2, p3, ncol=3)
+```
+
+
+## Models
+
+Question 1: what is the interpretation of $\beta_0$ in this model?
+
+Question 2: Which graph shows the predicted probabilities of damange from the fitted model shown above?
+
+Question: What are reasons for using the logit link function in logistic regression? 
+ - prevents fitted probabilities from being outside the interval (0,1)
+ - it gives you coefficients that have the (reasonably) intuitive interpretation of odds ratios
+ - it is the only reasonable link function for binary data
+
+
