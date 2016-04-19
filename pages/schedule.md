@@ -23,7 +23,7 @@ Week |       |     | Topic   | Notes | HW Due | Reading
  10  |     | 29, 31 | Hypothesis testing | [Lec 7](../assets/lectures/lecture7-model-confidence/lecture7-model-confidence.pdf) | [Lab 4](../assets/labs/lab4-fev/lab4-fev.pdf) | Kaplan Ch. 11-15
  11  | Apr | 5, 7   | Logistic regression | [Lec 8](../assets/lectures/lecture8-logistic-regression/lecture8-logistic-regression.pdf)| [Lab 5](../assets/labs/lab5-inference/lab5.pdf) | Kaplan Ch 16, _OI_ Ch 8
  12  |     | 12, 14 | Logistic regression | [Lab 6](../assets/labs/lab6-titanic/lab6-titanic.pdf) |  | [NYT article](http://www.nytimes.com/interactive/2016/04/11/upshot/for-the-poor-geography-is-life-and-death.html)
- 13  |     | 19, 21 | Missing data | | | 
+ 13  |     | 19, 21 | Missing data | [Lec 9](../assets/lectures/lecture9-missing-data/lecture9-missing-data.pdf) | | 
  14  |     | 26     | Final projects | | | 
 
 

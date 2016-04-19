@@ -14,10 +14,11 @@ The source code and PDF files associated with the lectures will be posted below 
 * Lecture 2: The Language of Models \[  [S](../assets/lectures/lecture2-model-language/lecture2-model-language.pdf) \]
 * Lecture 3: Simple Linear Regression \[ [S](../assets/lectures/lecture3-slr/lec3-slr.pdf) \}
 * Lecture 4: Multiple Linear Regression \[ [S](../assets/lectures/lecture4-mlr/lec4-mlr.pdf) \}
-* Lecture 5: Multiple Linear Regression (Confidence and Collinearity) \[ [S](../assets/lectures/lecture5-mlr-inference/lecture5-mlr-inference.pdf) \}
-* Lecture 6: Statistical confidence \[ [S](../assets/lectures/lecture6-confidence/lady-slides.html) \}
-* Lecture 7: Confidence in Regression Models \[ [S](../assets/lectures/lecture7-model-confidence/lecture7-model-confidence.pdf) \}
-* Lecture 8: Logistic Regression \[ [S](../assets/lectures/lecture8-logistic-regression/lecture8-logistic-regression.pdf) \}
+* Lecture 5: Multiple Linear Regression (Confidence and Collinearity) \[ [S](../assets/lectures/lecture5-mlr-inference/lecture5-mlr-inference.pdf) \]
+* Lecture 6: Statistical confidence \[ [S](../assets/lectures/lecture6-confidence/lady-slides.html) \]
+* Lecture 7: Confidence in Regression Models \[ [S](../assets/lectures/lecture7-model-confidence/lecture7-model-confidence.pdf) \]
+* Lecture 8: Logistic Regression \[ [S](../assets/lectures/lecture8-logistic-regression/lecture8-logistic-regression.pdf) \]
+* Lecture 9: Missing Data \[ [S](../assets/lectures/lecture9-missing-data/lecture9-missing-data.pdf) \]
 
 * Data Viz 1: Principles of Data Visualization \[  [S](../assets/lectures/data-viz-principles/data-viz-principles-and-EDA.html) \]
 * Data Viz 2: Data Visualization (ggplot2) \[  [S](../assets/lectures/data-viz-ggplot/data-viz-ggplot.html) \]
