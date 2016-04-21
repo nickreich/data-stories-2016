@@ -130,11 +130,10 @@ _Thurs, week 8_
  
   - logistic regression quiz
   - mini presentations on titanic lab
-  - missing data slides
   
 _Thurs week 13_
 
- - missing data lab
+ - missing data slides
  - course evaluations
  
 _tues week 14_
